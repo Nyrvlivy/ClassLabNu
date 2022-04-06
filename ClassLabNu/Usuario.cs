@@ -18,17 +18,52 @@ namespace ClassLabNu
 
         // propriedades
         public int Id { get { return id; } set { id = value; } }
-        public string Nome { get { return nome; } set { nome = value; } } 
+        public string Nome { get { return nome; } }
         public string Email { get { return email; } set { email = value; } }
-        public string Password { get 
-            { 
-                return password; 
-            } set { password = value; } }
+        public string Password
+
+        {
+            get
+            {
+                return password;
+            }
+        }
         public bool Ativo { get { return ativo; } set { ativo = value; } }
 
         // métodos construtores
+        public Usuario()
+        {
+
+        }
+        public Usuario(string nome, string email, string senha)
+        {
+            this.nome = nome;
+            this.email = email;
+            this.password = senha;
+            ativo = true;
+        }
+
+        public Usuario(int id, string nome, string email, string password, bool ativo)
+        {
+            this.id = id;
+            this.nome = nome;
+            this.email = email;
+            this.password = password;
+            this.ativo = ativo;
+        }
+
 
         // métodos da classe 
+        public int Inserir()
+        {
+            // chamadas de banco e gravo o registro
+            return id;
+        }
+        public static bool EfetuarLogin(string email, string senha) 
+        {
+            // realiza validação e devolve verdaddeiro ou falso
+            return false;
+        }
 
     }
 }
