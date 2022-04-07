@@ -8,5 +8,15 @@ namespace ClassLabNu
 {
     internal class Produto
     {
+        // Atributos
+
+        // Propriedades
+
+        // Construtores
+
+        // Métodos da Classe
+
+
+
     }
 }

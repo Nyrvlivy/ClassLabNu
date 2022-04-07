@@ -8,5 +8,15 @@ namespace ClassLabNu
 {
     internal class ItemPedido
     {
+        // Atributos
+
+        // Propriedades
+
+        // Construtores
+
+        // Métodos da Classe
+
+
+
     }
 }

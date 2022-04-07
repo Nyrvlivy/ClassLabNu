@@ -8,5 +8,15 @@ namespace ClassLabNu
 {
     public class Pedido
     {
+        // Atributos
+
+        // Propriedades
+
+        // Construtores
+
+        // Métodos da Classe
+
+
+
     }
 }

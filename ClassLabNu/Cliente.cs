@@ -6,7 +6,22 @@ using System.Threading.Tasks;
 
 namespace ClassLabNu
 {
-    internal class Cliente
+    public class Cliente
     {
+        // Atributos
+        private string id;
+        private string name;
+        private string cpf;
+        private string email;
+        private DateTime data;
+
+        // Propriedades
+
+        // Construtores
+
+        // Métodos da Classe
+       
+
+
     }
 }
