@@ -19,7 +19,7 @@ namespace ClassLabNu
         private bool ativo;
 
         // Propriedades
-        public int Id { get { return id; } set { id = value; } }
+        public int Id { get { return id; } }
         public string Nome { get { return nome; } }
         public string Email { get { return email; } set { email = value; } }
 
@@ -39,11 +39,11 @@ namespace ClassLabNu
         {
 
         }
-        public Usuario(string nome, string email, string senha, Nivel nivel)
+        public Usuario(string nome, string email, string password, Nivel nivel)
         {
             this.nome = nome;
             this.email = email;
-            this.password = senha;
+            this.password = password;
             this.nivel = nivel;
             ativo = true;
         }
