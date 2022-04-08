@@ -33,6 +33,17 @@ namespace ClassLabNu
         public Pedido()
         {
         }
+
+        public Pedido(DateTime dataPed, string status, double desconto, Cliente cliente, Usuario usuario, List<ItemPedido> itens)
+        {
+            DataPed = dataPed;
+            Status = status;
+            Desconto = desconto;
+            Cliente = cliente;
+            Usuario = usuario;
+            Itens = itens;
+        }
+
         public Pedido(int id, DateTime dataPed, string status, double desconto, Cliente cliente, Usuario usuario, List<ItemPedido> itens)
         {
             Id = id;
@@ -46,8 +57,23 @@ namespace ClassLabNu
 
 
         // Métodos da Classe
-        public void Inserir() { }
-        public void Alterar(Pedido pedido) { }
+        public void Inserir() { } // void ~porque não recupera valor
+        public bool Alterar(Pedido pedido) 
+        { 
+            return false;
+        }
+        public Pedido ConsultarPorId(int _id)
+        {
+            Pedido pedido = new Pedido();
+            // conecta banco e realiza consulta por Id do pedido
+            return pedido;
+        }
+               public List<Pedido> ConsultarPorClienteId(int _Cliente)
+        {
+            List<Pedido> pedidos = new List<Pedido>();
+            // conecta banco e realiza consulta por Id do cliente e retorna todos os pedidos
+            return pedidos;
+        }
 
 
 

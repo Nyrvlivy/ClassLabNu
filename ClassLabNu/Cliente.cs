@@ -58,13 +58,13 @@ namespace ClassLabNu
         public static Cliente ConsultarPorId(int _id)
         {
             Cliente cliente = new Cliente();
-            // conecta banco e realiza consulta por Id do produto
+            // conecta banco e realiza consulta por Id do cliente
             return cliente;
         }
         public static Cliente ConsultarPorCpf(int _cpf)
         {
             Cliente cliente = new Cliente();
-            // conecta banco e realiza consulta por CPF do produto
+            // conecta banco e realiza consulta por CPF do cliente
             return cliente;
         }
         public static List<Cliente> Listar()

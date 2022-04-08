@@ -40,13 +40,8 @@ namespace ClassLabNu
         {
 
         }
-        public static List<ItemPedido> Listar()
-        {
-            List<ItemPedido> itens = new List<ItemPedido>();
-           return itens;
+        
 
 
-
-        }
     }
 }
