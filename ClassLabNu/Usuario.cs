@@ -62,12 +62,12 @@ namespace ClassLabNu
         // Métodos da Classe 
         public int Inserir()
         {
-            // chamadas de banco e gravo o registro
+            // chamadas de banco e grava o registro
             return id;
         }
         public static bool EfetuarLogin(string email, string senha) 
         {
-            // realiza validação e devolve verdaddeiro ou falso
+            // realiza validação e devolve verdadeiro ou falso
             return false;
         }
 

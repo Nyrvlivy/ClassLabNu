@@ -50,10 +50,7 @@ namespace ClassLabNu
         }
 
         // Métodos da Classe
-        public void Inserir(Cliente cliente)
-        {
-
-        }
+        public void Inserir(Cliente cliente) { } // chamadas de banco e grava o registro
         public bool Alterar(Cliente cliente) 
         {
             return true;
@@ -61,13 +58,13 @@ namespace ClassLabNu
         public static Cliente ConsultarPorId(int _id) 
         { 
             Cliente cliente = new Cliente();
-            // cenas dos próximos capítulos...
+            // conecta banco e realiza consulta por Id do produto
             return cliente;
         }
         public static Cliente ConsultarPorCpf(int _cpf)
         {
             Cliente cliente = new Cliente();
-            // cenas dos próximos capítulos...
+            // conecta banco e realiza consulta por CPF do produto
             return cliente;
         }
         public static List<Cliente> Listar()
