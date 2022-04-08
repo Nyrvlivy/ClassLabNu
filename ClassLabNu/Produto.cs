@@ -19,19 +19,19 @@ namespace ClassLabNu
 
         // Propriedades
         public int Id { get { return id; } set { id = value; } }
-        public string Descricao { get { return descricao; } set { descricao = value; } } 
-        public double Unidade { get { return unidade; } set { unidade = value;} }
+        public string Descricao { get { return descricao; } set { descricao = value; } }
+        public double Unidade { get { return unidade; } set { unidade = value; } }
         public string CodBar { get { return codbar; } set { codbar = value; } }
         public double Valor { get { return valor; } set { valor = value; } }
-        public double Desconto { get { return desconto; } set { desconto = value;} }
-        public bool Descontinuado { get { return descontinuado; } set { descontinuado = value;} }
+        public double Desconto { get { return desconto; } set { desconto = value; } }
+        public bool Descontinuado { get { return descontinuado; } set { descontinuado = value; } }
 
         // Construtores
         public Produto()
         {
         }
 
-        public Produto( string descricao, double unidade, string codBar, double valor, double desconto)
+        public Produto(string descricao, double unidade, string codBar, double valor, double desconto)
         {
             CodBar = codBar;
             Descricao = descricao;
@@ -77,7 +77,7 @@ namespace ClassLabNu
             // cenas dos próximos capítulos...
             return produtos;
         }
-        public bool Alterar() 
+        public bool Alterar()
         {
             return true;
         }

@@ -17,17 +17,17 @@ namespace ClassLabNu
         private bool ativo;
 
         // Propriedades
-        public int Id { get { return id; } set { id = value; } } 
+        public int Id { get { return id; } set { id = value; } }
         public string Nome { get { return nome; } set { nome = value; } }
-        public string Cpf { get { return cpf; } set { cpf = value;} }
+        public string Cpf { get { return cpf; } set { cpf = value; } }
         public string Email { get { return email; } set { email = value; } }
         public DateTime DataCad { get { return dataCad; } set { dataCad = value; } }
         public bool Ativo { get { return ativo; } set { ativo = value; } }
 
 
         // Construtores
-        public Cliente() 
-        { 
+        public Cliente()
+        {
         }
 
         public Cliente(string nome, string cpf, string email)
@@ -51,12 +51,12 @@ namespace ClassLabNu
 
         // Métodos da Classe
         public void Inserir(Cliente cliente) { } // chamadas de banco e grava o registro
-        public bool Alterar(Cliente cliente) 
+        public bool Alterar(Cliente cliente)
         {
             return true;
         }
-        public static Cliente ConsultarPorId(int _id) 
-        { 
+        public static Cliente ConsultarPorId(int _id)
+        {
             Cliente cliente = new Cliente();
             // conecta banco e realiza consulta por Id do produto
             return cliente;

@@ -65,7 +65,7 @@ namespace ClassLabNu
             // chamadas de banco e grava o registro
             return id;
         }
-        public static bool EfetuarLogin(string email, string senha) 
+        public static bool EfetuarLogin(string email, string senha)
         {
             // realiza validação e devolve verdadeiro ou falso
             return false;
