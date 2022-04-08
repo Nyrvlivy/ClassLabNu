@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLabNu
 {
-    internal class ItemPedido
+    public class ItemPedido
     {
         // idped_ip    idprod_ip    valor    quantidade    desconto
 
@@ -40,8 +40,13 @@ namespace ClassLabNu
         {
 
         }
+        public static List<ItemPedido> Listar()
+        {
+            List<ItemPedido> itens = new List<ItemPedido>();
+           return itens;
 
 
 
+        }
     }
 }

@@ -17,8 +17,8 @@ namespace ClassLabNu
         private double desconto;
         private Cliente cliente;
         private Usuario usuario;
-        private List<ItemPedido> Itens;
-
+        private List<ItemPedido> itens;
+        
         // Propriedades
         public int Id { get { return id; } set { id = value; } }
         public DateTime DataPed { get { return dataPed; } set { dataPed = value; } }
@@ -28,10 +28,26 @@ namespace ClassLabNu
         public Usuario Usuario { get { return usuario; } set { usuario = value; } }
         public List<ItemPedido> Itens { get { return itens; } set { itens = value; } }
 
+
         // Construtores
+        public Pedido()
+        {
+        }
+        public Pedido(int id, DateTime dataPed, string status, double desconto, Cliente cliente, Usuario usuario, List<ItemPedido> itens)
+        {
+            Id = id;
+            DataPed = dataPed;
+            Status = status;
+            Desconto = desconto;
+            Cliente = cliente;
+            Usuario = usuario;
+            Itens = itens;
+        }
 
 
         // Métodos da Classe
+        public void Inserir() { }
+        public void Alterar(Pedido pedido) { }
 
 
 

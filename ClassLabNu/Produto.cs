@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLabNu
 {
-    internal class Produto
+    public class Produto
     {
         // Atributos
         private int id;
