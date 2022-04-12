@@ -50,7 +50,20 @@ namespace ClassLabNu
         }
 
         // Métodos da Classe
-        public void Inserir(Cliente cliente) { } // chamadas de banco e grava o registro
+        public void Inserir()// chamadas de banco e grava o registro
+
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "insert clientes(nome, cpf, email, datacad, ativo)" +
+                              "values ('" + Nome + "','" + Cpf + "','" +
+                              Email + "',default, default)";
+            cmd.ExecuteNonQuery(); //tantas linhas foram afetadas, ex.
+            // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
+            cmd.CommandText = "select @@identity"; // busca último id inserido
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
+        }
         public bool Alterar(Cliente cliente)
         {
             return true;
