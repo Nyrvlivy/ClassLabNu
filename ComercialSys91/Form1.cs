@@ -12,9 +12,9 @@ using ClassLabNu;
 
 namespace ComercialSys91
 {
-    public partial class Form1 : Form
+    public partial class form1 : Form
     {
-        public Form1()
+        public form1()
         {
             InitializeComponent();
         }
@@ -31,7 +31,35 @@ namespace ComercialSys91
         {
             Cliente c = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text);
             c.Inserir();
-            txtId.Text = c.Id.ToString(); // Fazer tratamento em Clientes para erros de duplicação
+            if (c.Id > 0)
+            {
+                txtId.Text = c.Id.ToString(); // Fazer tratamento em Clientes para erros de duplicação
+                MessageBox.Show("Cliente gravado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Falha na inserção. Não foi possível gravar dados corretamente!");
+            }
+        }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            lstClientes.Items.Clear();
+            List<Cliente> listaDeClientes = Cliente.Listar();
+            foreach (Cliente cliente in listaDeClientes)
+            {
+                lstClientes.Items.Add(cliente.Id + " | " + cliente.Nome + " - " + cliente.Cpf);
+            }
+        }
+
+        private void lstClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -50,19 +50,18 @@ namespace ClassLabNu
         }
 
         // Métodos da Classe
-        public void Inserir()// chamadas de banco e grava o registro
+        public void Inserir() // chamadas de banco e grava o registro
 
         {
             var cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "insert clientes(nome, cpf, email, datacad, ativo)" +
-                              "values ('" + Nome + "','" + Cpf + "','" +
-                              Email + "',default, default)";
-            cmd.ExecuteNonQuery(); //tantas linhas foram afetadas, ex.
-            // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
-            cmd.CommandText = "select @@identity"; // busca último id inserido
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_cliente_inserir";
+            cmd.Parameters.AddWithValue("_nome", Nome);
+            cmd.Parameters.AddWithValue("_cpf", Cpf);
+            cmd.Parameters.AddWithValue("_email", Email);
             Id = Convert.ToInt32(cmd.ExecuteScalar());
             cmd.Connection.Close();
+            // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
         }
         public bool Alterar(Cliente cliente)
         {
@@ -83,7 +82,21 @@ namespace ClassLabNu
         public static List<Cliente> Listar()
         {
             List<Cliente> clientes = new List<Cliente>();
-            // cenas dos próximos capítulos...
+            var cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select * from clientes order by 2"; // Colocar em ordem na coluna 2 (alfabética)
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                clientes.Add(new Cliente(
+                    dr.GetInt32(0),
+                    dr.GetString(1),
+                    dr.GetString(2),
+                    dr.GetString(3),
+                    dr.GetDateTime(4),
+                    dr.GetBoolean(5)
+                    ));
+            }
             return clientes;
         }
 
