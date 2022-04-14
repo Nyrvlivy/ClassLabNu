@@ -6,8 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using MySql.Data.MySqlClient; // não precisa, só usar como Var
+using System.Windows.Forms;
 using ClassLabNu;
 
 namespace ComercialSys91
@@ -21,10 +21,7 @@ namespace ComercialSys91
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show($"Olá, {usuario.Nome}!");
-            //Text = "Sistema Comercial TI91 | " + usuario.Nome + " -- " + usuario.Nivel.Nome;
-            // OBS.: Se colocar um nível específico, você pode determinar que só um determinado nível pode usar o formulário
-            //MessageBox.Show("Olá, TI91!");
+
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -56,11 +53,16 @@ namespace ComercialSys91
             List<Cliente> listaDeClientes = Cliente.Listar();
             foreach (Cliente cliente in listaDeClientes)
             {
-                lstClientes.Items.Add(cliente.Id + " | " + cliente.Nome + " - " + cliente.Cpf);
+                lstClientes.Items.Add(cliente.Id + " | CPF:" + cliente.Cpf + " | " + cliente.Nome + "   | Email: " + cliente.Email);
             }
         }
 
         private void lstClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

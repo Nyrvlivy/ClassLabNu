@@ -33,11 +33,21 @@ namespace ClassLabNu
 
         public Produto(string descricao, double unidade, string codBar, double valor, double desconto)
         {
-            CodBar = codBar;
             Descricao = descricao;
             Unidade = unidade;
+            CodBar = codBar;
             Valor = valor;
             Desconto = desconto;
+        }
+
+        public Produto(string descricao, double unidade, string codbar, double valor, double desconto, bool descontinuado)
+        {
+            Descricao = descricao;
+            Unidade = unidade;
+            CodBar = codbar;
+            Valor = valor;
+            Desconto = desconto;
+            Descontinuado = descontinuado;
         }
 
         public Produto(int id, string descricao, double unidade, string codbar, double valor, double desconto, bool descontinuado)
