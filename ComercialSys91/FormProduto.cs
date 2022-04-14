@@ -26,7 +26,10 @@ namespace ComercialSys91
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-           
+            if (checkBox1.Checked) 
+            {
+                // descontinuado = true
+            }
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -46,8 +49,16 @@ namespace ComercialSys91
                 // Mensagem de erro evidenciando a falha.
             }
         }
-
-        
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            lstProdutos.Items.Clear();
+            List<Produto> listaDeProdutos = Produto.Listar();
+            foreach (Produto produto in listaDeProdutos)
+            {
+                lstProdutos.Items.Add(produto.Id + "  |  Descrição: " + produto.Descricao + "     |  Unidade: " + produto.Unidade + "   |  Código de Barras: " + produto.CodBar +
+                                      "   |  Valor: R$" + produto.Valor + "   |  Desconto: " + produto.Desconto + "%");
+            }
+        }
 
         private void lstProdutos_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -74,15 +85,5 @@ namespace ComercialSys91
 
         }
 
-        private void btnListar_Click(object sender, EventArgs e)
-        {
-            lstProdutos.Items.Clear();
-            List<Produto> listaDeProdutos = Produto.Listar();
-            foreach (Produto produto in listaDeProdutos)
-            {
-                lstProdutos.Items.Add(produto.Id + "  |  Descrição: " + produto.Descricao + "     |  Unidade: " + produto.Unidade + "   |  Código de Barras: " + produto.CodBar +
-                                      "   |  Valor: R$" + produto.Valor + "   |  Desconto: " + produto.Desconto + "%");
-            }
-        }
     }
 }

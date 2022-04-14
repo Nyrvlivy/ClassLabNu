@@ -37,6 +37,16 @@ namespace ComercialSys91
             }
         }
 
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            lstUsuarios.Items.Clear();
+            List<Usuario> listaDeUsuarios = Usuario.Listar();
+            foreach (Usuario usuario in listaDeUsuarios)
+            {
+                lstUsuarios.Items.Add(usuario.Id + "  |  Nome: " + usuario.Nome + "     |  Email: " + usuario.Email + "   |  Senha: " + usuario.Senha +
+                                      "   |  Nivel: " + usuario.Nivel);
+            }
+        }
         private void txtNome_TextChanged(object sender, EventArgs e)
         {
 
@@ -67,15 +77,5 @@ namespace ComercialSys91
 
         }
 
-        private void btnListar_Click(object sender, EventArgs e)
-        {
-            lstUsuarios.Items.Clear();
-            List<Usuario> listaDeUsuarios = Usuario.Listar();
-            foreach (Usuario usuario in listaDeUsuarios)
-            {
-                lstUsuarios.Items.Add(usuario.Id + "  |  Nome: " + usuario.Nome + "     |  Email: " + usuario.Email + "   |  Senha: " + usuario.Senha +
-                                      "   |  Nivel: " + usuario.Nivel);
-            }
-        }
     }
 }

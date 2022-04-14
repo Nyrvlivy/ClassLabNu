@@ -41,12 +41,6 @@ namespace ComercialSys91
                 //("Falha na inserção. Não foi possível gravar dados corretamente!");
             }
         }
-
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnListar_Click(object sender, EventArgs e)
         {
             lstClientes.Items.Clear();
@@ -56,6 +50,12 @@ namespace ComercialSys91
                 lstClientes.Items.Add(cliente.Id + " | CPF:" + cliente.Cpf + " | " + cliente.Nome + "   | Email: " + cliente.Email);
             }
         }
+
+        private void txtNome_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         private void lstClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
