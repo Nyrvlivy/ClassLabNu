@@ -12,9 +12,9 @@ using ClassLabNu;
 
 namespace ComercialSys91
 {
-    public partial class form1 : Form
+    public partial class FormCliente : Form
     {
-        public form1()
+        public FormCliente()
         {
             InitializeComponent();
         }
@@ -30,15 +30,18 @@ namespace ComercialSys91
         private void btnInserir_Click(object sender, EventArgs e)
         {
             Cliente c = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text);
-            c.Inserir();
-            if (c.Id > 0)
+
+            try
             {
-                txtId.Text = c.Id.ToString(); // Fazer tratamento em Clientes para erros de duplicação
+                c.Inserir();
                 MessageBox.Show("Cliente gravado com sucesso!");
+
+
             }
-            else
+            catch (MySql.Data.MySqlClient.MySqlException errinho)
             {
-                MessageBox.Show("Falha na inserção. Não foi possível gravar dados corretamente!");
+                MessageBox.Show($"Olá, amiguinho! Ooops, deu {errinho.Message}");
+                //("Falha na inserção. Não foi possível gravar dados corretamente!");
             }
         }
 

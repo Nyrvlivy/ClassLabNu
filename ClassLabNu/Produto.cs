@@ -52,7 +52,22 @@ namespace ClassLabNu
         }
 
         // Métodos da Classe
-        public void Inserir(Produto produto) { }
+        public void Inserir() // chamadas de banco e grava o registro
+
+        {
+            var cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "sp_produto_inserir";
+            cmd.Parameters.AddWithValue("_descricao", Descricao);
+            cmd.Parameters.AddWithValue("_unidade", Unidade);
+            cmd.Parameters.AddWithValue("_codbar", CodBar);
+            cmd.Parameters.AddWithValue("_valor", Valor);
+            cmd.Parameters.AddWithValue("_desconto", Desconto);
+            cmd.Parameters.AddWithValue("_descontinuado", Descontinuado);
+            Id = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd.Connection.Close();
+            // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
+        }
         public static Produto ConsultarPorId(int _id)
         {
             Produto produto = new Produto();
@@ -74,7 +89,22 @@ namespace ClassLabNu
         public static List<Produto> Listar()
         {
             List<Produto> produtos = new List<Produto>();
-            // cenas dos próximos capítulos...
+            var cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select * from produtos order by 2"; // Colocar em ordem na coluna 2 (alfabética)
+            var dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                produtos.Add(new Produto(
+                    dr.GetInt32(0),     // IDPROD
+                    dr.GetString(1),    // DESCRICAO
+                    dr.GetDouble(2),    // UNIDADE
+                    dr.GetString(3),    // CODBAR
+                    dr.GetDouble(4),    // VALOR
+                    dr.GetDouble(5),    // DESCONTO
+                    dr.GetBoolean(6)    // DESCONTINUADO
+                    ));
+            }
             return produtos;
         }
         public bool Alterar()

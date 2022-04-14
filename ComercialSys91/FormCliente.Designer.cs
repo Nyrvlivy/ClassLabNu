@@ -1,6 +1,6 @@
 ﻿namespace ComercialSys91
 {
-    partial class form1
+    partial class FormCliente
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -140,7 +140,7 @@
             this.lstClientes.FormattingEnabled = true;
             this.lstClientes.Location = new System.Drawing.Point(31, 246);
             this.lstClientes.Name = "lstClientes";
-            this.lstClientes.Size = new System.Drawing.Size(551, 134);
+            this.lstClientes.Size = new System.Drawing.Size(709, 134);
             this.lstClientes.TabIndex = 10;
             this.lstClientes.SelectedIndexChanged += new System.EventHandler(this.lstClientes_SelectedIndexChanged);
             // 
@@ -154,7 +154,7 @@
             this.btnListar.UseVisualStyleBackColor = true;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
-            // form1
+            // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,8 +172,8 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.txtId);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "form1";
-            this.Text = "Form1";
+            this.Name = "FormCliente";
+            this.Text = "FormCliente";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

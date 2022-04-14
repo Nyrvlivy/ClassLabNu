@@ -27,7 +27,7 @@ namespace ClassLabNu
 
 
             > Conexão do Host da 'minha casa':
-                StrConexao = @"server=201.52.8.187;database=comercialdb0191;user id=root;password=;port=3306"; 
+                StrConexao = @"server=201.52.8.187;database=comercialdb0191;user id=root;password=mysql54Hf7-;port=3306"; internet
             
             > Conexão pelo nome do Host do computador do senac:
                 StrConexao = @"ITQ0626037W10-1";     
@@ -39,8 +39,8 @@ namespace ClassLabNu
                 StrConexao = @"server=127.0.0.1;database=comercialdb0191;user id=root;password=;port=3306";
 
             ________________________________________________________________________________________________________________ */
-           
-            StrConexao = @"server=127.0.0.1;database=comercialdb0191;user id=root;password=;port=3306";
+
+            StrConexao = @"server=127.0.0.1;database=comercialdb0191;user id=root;password=mysql54Hf7-;port=3306";
             MySqlConnection cn = new MySqlConnection(StrConexao);
             // Será necessário a criação de uma classe de exceção para notificar ocasionais problemas
             try
@@ -49,7 +49,7 @@ namespace ClassLabNu
             }
             catch (Exception)
             {
-                throw;
+                
             }
 
             cmd.Connection = cn;

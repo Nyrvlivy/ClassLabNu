@@ -89,12 +89,12 @@ namespace ClassLabNu
             while (dr.Read())
             {
                 clientes.Add(new Cliente(
-                    dr.GetInt32(0),
-                    dr.GetString(1),
-                    dr.GetString(2),
-                    dr.GetString(3),
-                    dr.GetDateTime(4),
-                    dr.GetBoolean(5)
+                    dr.GetInt32(0),         // IDCLI
+                    dr.GetString(1),        // NOME
+                    dr.GetString(2),        // CPF
+                    dr.GetString(3),        // EMAIL
+                    dr.GetDateTime(4),      // DATACAD
+                    dr.GetBoolean(5)        // ATIVO
                     ));
             }
             return clientes;
