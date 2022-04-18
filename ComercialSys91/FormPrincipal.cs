@@ -60,10 +60,6 @@ namespace ComercialSys91
             //Exibe o Formulario de Cliente no Formprincipal
             formProduto.Show();
         }
-
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+                
     }
 }

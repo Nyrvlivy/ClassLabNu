@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace ClassLabNu
 {
@@ -65,7 +67,7 @@ namespace ClassLabNu
         public void Inserir() // chamadas de banco e grava o registro
 
         {
-            var cmd = Banco.Abrir();
+            MySqlCommand cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_produto_inserir";
             cmd.Parameters.AddWithValue("_descricao", Descricao);
@@ -99,7 +101,7 @@ namespace ClassLabNu
         public static List<Produto> Listar()
         {
             List<Produto> produtos = new List<Produto>();
-            var cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from produtos order by 2"; // Colocar em ordem na coluna 2 (alfabética)
             var dr = cmd.ExecuteReader();

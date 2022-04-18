@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace ClassLabNu
 {
@@ -30,6 +32,13 @@ namespace ClassLabNu
         {
         }
 
+        public Cliente(int id, string nome, string email)
+        {
+            Id = id;
+            Nome = nome;
+            Email = email;
+        }
+
         public Cliente(string nome, string cpf, string email)
         {
             Nome = nome;
@@ -53,7 +62,7 @@ namespace ClassLabNu
         public void Inserir() // chamadas de banco e grava o registro
 
         {
-            var cmd = Banco.Abrir();
+            MySqlCommand cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_cliente_inserir";
             cmd.Parameters.AddWithValue("_nome", Nome);
@@ -63,14 +72,46 @@ namespace ClassLabNu
             cmd.Connection.Close();
             // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
         }
-        public bool Alterar(Cliente cliente)
+        public bool Alterar(int _id, string nome, string email)
         {
-            return true;
+            bool resultado = false;
+            try
+            {
+                MySqlCommand cmd = Banco.Abrir();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                // Recebe o nome da procedure
+                cmd.CommandText = "sp_cliente_alterar";
+                // Recebe os parâmetros da procedure - Lá do MySQL
+                cmd.Parameters.Add("_id", MySqlDbType.Int32).Value = _id;
+                // USA-SE ESSE^^ de forma mais técnica e é necessário saber exatamente o tipo de valor do parametro
+                cmd.Parameters.Add("_nome", MySqlDbType.VarChar).Value = Nome;
+                cmd.Parameters.Add("_email", MySqlDbType.VarChar).Value = Email;
+                // LEMBRETE: o valor remete ao nome do campo construído da PROCEDURE, logo é VarChar e não String!!
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+            catch (Exception)
+            {
+
+            }
+            return resultado;
         }
         public static Cliente ConsultarPorId(int _id)
         {
             Cliente cliente = new Cliente();
             // conecta banco e realiza consulta por Id do cliente
+            MySqlCommand cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "select * from clientes where idCli =" + _id;
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read()) // dr data reader
+            {
+                cliente.Id = Convert.ToInt32(dr["idCli"]);
+                cliente.Nome = dr["nome"].ToString();
+                cliente.Email = dr.GetString(2);
+                cliente.dataCad = dr.GetDateTime(3);
+                cliente.ativo = dr.GetBoolean(4);
+            }
             return cliente;
         }
         public static Cliente ConsultarPorCpf(int _cpf)
@@ -82,9 +123,9 @@ namespace ClassLabNu
         public static List<Cliente> Listar()
         {
             List<Cliente> clientes = new List<Cliente>();
-            var cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from clientes order by 2"; // Colocar em ordem na coluna 2 (alfabética)
+            cmd.CommandText = "select * from clientes where ativo = 1 order by 2"; // Colocar em ordem na coluna 2 (alfabética)
             var dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -100,5 +141,14 @@ namespace ClassLabNu
             return clientes;
         }
 
+        public void Desativado(int _id)
+        {
+            MySqlCommand cmd = Banco.Abrir();
+            cmd.CommandType = CommandType.Text;
+            // Text direto, pois Command.Type usamos quando criamos procedure
+            cmd.CommandText = "upadte clientes set ativo = 0 where idCli = " + _id;
+            cmd.ExecuteReader();
+            cmd.Connection.Close();
+        }
     }
 }

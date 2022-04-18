@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace ClassLabNu
 {
@@ -47,7 +49,7 @@ namespace ClassLabNu
         public void Inserir() // chamadas de banco e grava o registro
 
         {
-            var cmd = Banco.Abrir();
+            MySqlCommand cmd = Banco.Abrir();
             cmd.CommandType = System.Data.CommandType.StoredProcedure;
             cmd.CommandText = "sp_tipo_inserir";
             cmd.Parameters.AddWithValue("_nome", Nome);
@@ -75,7 +77,7 @@ namespace ClassLabNu
         public static List<Tipo> Listar()
         {
             List<Tipo> tipos = new List<Tipo>();
-            var cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from tipos order by 2"; // Colocar em ordem na coluna 2 (alfabética)
             var dr = cmd.ExecuteReader();
