@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCpf = new System.Windows.Forms.TextBox();
@@ -38,9 +40,21 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnInserir = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lstClientes = new System.Windows.Forms.ListBox();
             this.btnListar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnDesativar = new System.Windows.Forms.Button();
+            this.chkAtivo = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dtpDataCad = new System.Windows.Forms.DateTimePicker();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.clmIdCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clnAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // txtId
@@ -136,18 +150,9 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Insira as informações para cadastro de Cliente:";
             // 
-            // lstClientes
-            // 
-            this.lstClientes.FormattingEnabled = true;
-            this.lstClientes.Location = new System.Drawing.Point(31, 213);
-            this.lstClientes.Name = "lstClientes";
-            this.lstClientes.Size = new System.Drawing.Size(722, 186);
-            this.lstClientes.TabIndex = 10;
-            this.lstClientes.SelectedIndexChanged += new System.EventHandler(this.lstClientes_SelectedIndexChanged);
-            // 
             // btnListar
             // 
-            this.btnListar.Location = new System.Drawing.Point(31, 405);
+            this.btnListar.Location = new System.Drawing.Point(545, 148);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(75, 23);
             this.btnListar.TabIndex = 11;
@@ -158,21 +163,163 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 190);
+            this.label6.Enabled = false;
+            this.label6.Location = new System.Drawing.Point(545, 91);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(151, 13);
+            this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Lista dos Clientes em Registro:";
+            this.label6.Text = "Status:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(153, 148);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.TabIndex = 13;
+            this.btnAlterar.Text = "&Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnDesativar
+            // 
+            this.btnDesativar.Location = new System.Drawing.Point(626, 148);
+            this.btnDesativar.Name = "btnDesativar";
+            this.btnDesativar.Size = new System.Drawing.Size(75, 23);
+            this.btnDesativar.TabIndex = 14;
+            this.btnDesativar.Text = "&Desativar";
+            this.btnDesativar.UseVisualStyleBackColor = true;
+            // 
+            // chkAtivo
+            // 
+            this.chkAtivo.AutoSize = true;
+            this.chkAtivo.Enabled = false;
+            this.chkAtivo.Location = new System.Drawing.Point(591, 90);
+            this.chkAtivo.Name = "chkAtivo";
+            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.TabIndex = 15;
+            this.chkAtivo.Text = "Ativo";
+            this.chkAtivo.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Enabled = false;
+            this.label7.Location = new System.Drawing.Point(545, 117);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Data de Cadastro:";
+            // 
+            // dtpDataCad
+            // 
+            this.dtpDataCad.Enabled = false;
+            this.dtpDataCad.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataCad.Location = new System.Drawing.Point(645, 115);
+            this.dtpDataCad.Name = "dtpDataCad";
+            this.dtpDataCad.Size = new System.Drawing.Size(115, 20);
+            this.dtpDataCad.TabIndex = 17;
+            // 
+            // dgvClientes
+            // 
+            this.dgvClientes.AccessibleName = "dgvClientes";
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmIdCli,
+            this.clnNome,
+            this.clnCpf,
+            this.clnEmail,
+            this.clnAtivo});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvClientes.Location = new System.Drawing.Point(35, 205);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersVisible = false;
+            this.dgvClientes.Size = new System.Drawing.Size(725, 219);
+            this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // clmIdCli
+            // 
+            this.clmIdCli.Frozen = true;
+            this.clmIdCli.HeaderText = "Id";
+            this.clmIdCli.Name = "clmIdCli";
+            this.clmIdCli.ReadOnly = true;
+            this.clmIdCli.Width = 50;
+            // 
+            // clnNome
+            // 
+            this.clnNome.Frozen = true;
+            this.clnNome.HeaderText = "Nome";
+            this.clnNome.Name = "clnNome";
+            this.clnNome.ReadOnly = true;
+            this.clnNome.Width = 274;
+            // 
+            // clnCpf
+            // 
+            this.clnCpf.Frozen = true;
+            this.clnCpf.HeaderText = "CPF";
+            this.clnCpf.Name = "clnCpf";
+            this.clnCpf.ReadOnly = true;
+            this.clnCpf.Width = 110;
+            // 
+            // clnEmail
+            // 
+            this.clnEmail.Frozen = true;
+            this.clnEmail.HeaderText = "Email";
+            this.clnEmail.Name = "clnEmail";
+            this.clnEmail.ReadOnly = true;
+            this.clnEmail.Width = 230;
+            // 
+            // clnAtivo
+            // 
+            this.clnAtivo.Frozen = true;
+            this.clnAtivo.HeaderText = "Ativo";
+            this.clnAtivo.Name = "clnAtivo";
+            this.clnAtivo.ReadOnly = true;
+            this.clnAtivo.Width = 60;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(127, 62);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(61, 20);
+            this.btnBuscar.TabIndex = 18;
+            this.btnBuscar.Text = "...";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FormCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.dgvClientes);
+            this.Controls.Add(this.dtpDataCad);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.chkAtivo);
+            this.Controls.Add(this.btnDesativar);
+            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnListar);
-            this.Controls.Add(this.lstClientes);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.label4);
@@ -187,6 +334,7 @@
             this.Name = "FormCliente";
             this.Text = "Registro de Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,9 +352,20 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ListBox lstClientes;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnDesativar;
+        private System.Windows.Forms.CheckBox chkAtivo;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dtpDataCad;
+        private System.Windows.Forms.DataGridView dgvClientes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmIdCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnNome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnCpf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clnEmail;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clnAtivo;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 

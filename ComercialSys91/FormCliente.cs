@@ -43,11 +43,18 @@ namespace ComercialSys91
         }
         private void btnListar_Click(object sender, EventArgs e)
         {
-            lstClientes.Items.Clear();
+            dgvClientes.Rows.Clear();
             List<Cliente> listaDeClientes = Cliente.Listar();
+            int cont = listaDeClientes.Count;
             foreach (Cliente cliente in listaDeClientes)
             {
-                lstClientes.Items.Add(cliente.Id + " | CPF:" + cliente.Cpf + " | " + cliente.Nome + "   | Email: " + cliente.Email);
+                dgvClientes.Rows.Add();
+                dgvClientes.Rows[cont].Cells[0].Value = cliente.Id.ToString();
+                dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome.ToString();
+                dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf.ToString();
+                dgvClientes.Rows[cont].Cells[3].Value = cliente.Email.ToString();
+                dgvClientes.Rows[cont].Cells[4].Value = cliente.Ativo;
+                cont++;
             }
         }
 
@@ -56,15 +63,62 @@ namespace ComercialSys91
 
         }
 
-
-        private void lstClientes_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            if (btnBuscar.Text == "...")
+            {
+                txtId.ReadOnly = false;
+                txtId.Focus();
+                btnBuscar.Text = "&Buscar";
+            }
+            else
+            {
+                Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtId.Text));
+                if (cliente.Id > 0)
+                {
+                    label6.Enabled = true;
+                    label7.Enabled = true;
+                    txtNome.Text = cliente.Nome.ToString();
+                    txtCpf.Text = cliente.Cpf.ToString();
+                    txtEmail.Text = cliente.Email.ToString();
+                    dtpDataCad.Value = cliente.DataCad.Date;
+                    chkAtivo.Checked = cliente.Ativo;
+
+                    btnBuscar.Text = "...";
+                    txtId.ReadOnly=true;
+                    label6.Enabled = false;
+                    label7.Enabled = false;
+                    btnAlterar.Enabled=true;
+                    txtCpf.ReadOnly=true;
+                }
+                else
+                {
+                    MessageBox.Show("Código de cliente não encontrado!");
+                }
+            }
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = new Cliente();
+            if(cliente.Alterar(int.Parse(txtId.Text),txtNome.Text,txtEmail.Text))
+            {
+                MessageBox.Show("Cliente alterado com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Falha na alteração");
+            }
         }
     }
 }

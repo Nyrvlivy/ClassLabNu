@@ -101,7 +101,7 @@ namespace ClassLabNu
             Cliente cliente = new Cliente();
             // conecta banco e realiza consulta por Id do cliente
             MySqlCommand cmd = Banco.Abrir();
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from clientes where idCli =" + _id;
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read()) // dr data reader
@@ -109,8 +109,8 @@ namespace ClassLabNu
                 cliente.Id = Convert.ToInt32(dr["idCli"]);
                 cliente.Nome = dr["nome"].ToString();
                 cliente.Email = dr.GetString(2);
-                cliente.dataCad = dr.GetDateTime(3);
-                cliente.ativo = dr.GetBoolean(4);
+                cliente.DataCad = dr.GetDateTime(3);
+                cliente.Ativo = dr.GetBoolean(4);
             }
             return cliente;
         }
