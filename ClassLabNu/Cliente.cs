@@ -108,9 +108,10 @@ namespace ClassLabNu
             {
                 cliente.Id = Convert.ToInt32(dr["idCli"]);
                 cliente.Nome = dr["nome"].ToString();
-                cliente.Email = dr.GetString(2);
-                cliente.DataCad = dr.GetDateTime(3);
-                cliente.Ativo = dr.GetBoolean(4);
+                cliente.Cpf = dr.GetString(2);
+                cliente.Email = dr.GetString(3);
+                cliente.dataCad = dr.GetDateTime(4);
+                cliente.Ativo = dr.GetBoolean(5);
             }
             return cliente;
         }
@@ -118,6 +119,19 @@ namespace ClassLabNu
         {
             Cliente cliente = new Cliente();
             // conecta banco e realiza consulta por CPF do cliente
+            MySqlCommand cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select * from clientes where cpf =" + _cpf;
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read()) // dr data reader
+            {
+                cliente.Id = Convert.ToInt32(dr["Cpf"]);
+                cliente.Nome = dr["Nome"].ToString();
+                cliente.Cpf = dr.GetString(2);
+                cliente.Email = dr.GetString(3);
+                cliente.dataCad = dr.GetDateTime(4);
+                cliente.Ativo = dr.GetBoolean(5);
+            }
             return cliente;
         }
         public static List<Cliente> Listar()
@@ -126,7 +140,7 @@ namespace ClassLabNu
             MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from clientes where ativo = 1 order by 2"; // Colocar em ordem na coluna 2 (alfabética)
-            var dr = cmd.ExecuteReader();
+            MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
                 clientes.Add(new Cliente(

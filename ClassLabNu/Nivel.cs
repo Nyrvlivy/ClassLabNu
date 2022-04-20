@@ -18,9 +18,9 @@ namespace ClassLabNu
         public readonly bool ativo;
 
         // Criando Propriedades
-        public int Id { get { return id; } }
+        public int Id { get { return id; } set { id = value; } }
         public string Nome { get { return nome; } private set { nome = value; } }
-        public string Sigla { get { return sigla; } }
+        public string Sigla { get { return sigla; } set { sigla = value; } }
 
 
         // Métodos Construtores
@@ -62,11 +62,26 @@ namespace ClassLabNu
         /// <param name="sigla">valor literal da nova sigla</param>
         /// <returns>Retorna valor par teste lógico, confirmando a alteração</returns>
 
-        public bool Alterar(int id, string sigla)
+        public bool Alterar(int _id, string _sigla)
         {
             return true;
         }
 
+        public static Nivel Consultar(int _id)
+        {
+            Nivel nivel = new Nivel();
+            MySqlCommand cmd = Banco.Abrir();
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select * from nivel where idNv =" + _id;
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read()) // dr data reader
+            {
+                nivel.Id = Convert.ToInt32(dr["idNv"]);
+                nivel.Nome = dr.GetString(1);
+                nivel.Sigla = dr.GetString(2);
+            }
+            return nivel;
+        }
 
 
     }

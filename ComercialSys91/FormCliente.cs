@@ -21,7 +21,7 @@ namespace ComercialSys91
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            txtNome.Focus();
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -32,12 +32,13 @@ namespace ComercialSys91
             {
                 c.Inserir();
                 MessageBox.Show("Cliente gravado com sucesso!");
+                btnlimpar_Click(sender, e); //sender = ação de enviar; e = evento (clique)
 
 
             }
-            catch (MySql.Data.MySqlClient.MySqlException errinho)
+            catch (MySql.Data.MySqlClient.MySqlException error)
             {
-                MessageBox.Show($"Olá, amiguinho! Ooops, deu {errinho.Message}");
+                MessageBox.Show($"Olá, amiguinho! Ooops, deu erro: {error.Message}");
                 //("Falha na inserção. Não foi possível gravar dados corretamente!");
             }
         }
@@ -45,7 +46,7 @@ namespace ComercialSys91
         {
             dgvClientes.Rows.Clear();
             List<Cliente> listaDeClientes = Cliente.Listar();
-            int cont = listaDeClientes.Count;
+            int cont = 0;
             foreach (Cliente cliente in listaDeClientes)
             {
                 dgvClientes.Rows.Add();
@@ -75,34 +76,86 @@ namespace ComercialSys91
                 txtId.ReadOnly = false;
                 txtId.Focus();
                 btnBuscar.Text = "&Buscar";
+
+                txtId.Text = "";
+                txtCpf.Text = "";
+                txtNome.Text = "";
+                txtEmail.Text = "";
+
+                txtCpf.ReadOnly = false;
+                btnlimpar.Enabled = false;
+
+                label6.Enabled = false;
+                label7.Enabled = false;
             }
             else
             {
                 Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtId.Text));
                 if (cliente.Id > 0)
                 {
-                    label6.Enabled = true;
-                    label7.Enabled = true;
+                    txtId.Focus();
+                    txtId.Enabled = true;
+
                     txtNome.Text = cliente.Nome.ToString();
                     txtCpf.Text = cliente.Cpf.ToString();
                     txtEmail.Text = cliente.Email.ToString();
+
                     dtpDataCad.Value = cliente.DataCad.Date;
                     chkAtivo.Checked = cliente.Ativo;
 
-                    btnBuscar.Text = "...";
-                    txtId.ReadOnly=true;
-                    label6.Enabled = false;
-                    label7.Enabled = false;
-                    btnAlterar.Enabled=true;
-                    txtCpf.ReadOnly=true;
+                    txtCpf.ReadOnly = true;
+                    btnAlterar.Enabled = true;
+                    btnInserir.Enabled = false;
+                    btnlimpar.Enabled = true;
+                    label6.Enabled = true;
+                    label7.Enabled = true;
+
+                    btnBuscar.Enabled = false;
+
+
                 }
                 else
                 {
                     MessageBox.Show("Código de cliente não encontrado!");
+                    btnBuscar.Text = "...";
+
+                    txtId.Focus();
+                    txtId.Text = "";
+
+                    txtId.ReadOnly = true;
+                    txtCpf.ReadOnly = false;
+
+                    label6.Enabled = false;
+                    label7.Enabled = false;
+                    chkAtivo.Enabled = false;
+
+                    btnBuscar.Enabled = true;
+                    btnAlterar.Enabled = false;
+
                 }
             }
         }
+        private void btnlimpar_Click(object sender, EventArgs e)
+        {
+            txtNome.Focus();
 
+            txtId.Text = "";
+            txtNome.Text = "";
+            txtCpf.Text = "";
+            txtEmail.Text = "";
+
+            btnBuscar.Text = "...";
+            label6.Enabled = false;
+            label7.Enabled = false;
+            txtId.ReadOnly = true;
+            txtCpf.ReadOnly = false;
+            txtCpf.Enabled = true;
+            btnBuscar.Enabled = true;
+            btnInserir.Enabled = true;
+            btnAlterar.Enabled = false;
+        }
+
+        // CRIAR LOG DE AUDITORIA
         private void label6_Click(object sender, EventArgs e)
         {
 
@@ -111,14 +164,35 @@ namespace ComercialSys91
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
-            if(cliente.Alterar(int.Parse(txtId.Text),txtNome.Text,txtEmail.Text))
+            if (cliente.Alterar(int.Parse(txtId.Text), txtNome.Text, txtEmail.Text))
             {
                 MessageBox.Show("Cliente alterado com sucesso!");
             }
             else
             {
                 MessageBox.Show("Falha na alteração");
+                btnBuscar.Text = "...";
+                txtId.Text = "";
+                txtCpf.Text = "";
+                txtNome.Text = "";
+                txtEmail.Text = "";
+                txtId.ReadOnly = true;
+                label6.Enabled = false;
+                label7.Enabled = false;
+                chkAtivo.Enabled = false;
+                txtCpf.ReadOnly = false;
+                btnAlterar.Enabled = false;
             }
+        }
+
+        private void txtCpf_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDesativar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
