@@ -72,7 +72,7 @@ namespace ClassLabNu
             cmd.Connection.Close();
             // OBS.: Lembrar de fazer tratamento quando da erro de duplicação
         }
-        public bool Alterar(int _id, string nome, string email)
+        public bool Alterar(int _id, string _nome, string _email)
         {
             bool resultado = false;
             try
@@ -84,13 +84,13 @@ namespace ClassLabNu
                 // Recebe os parâmetros da procedure - Lá do MySQL
                 cmd.Parameters.Add("_id", MySqlDbType.Int32).Value = _id;
                 // USA-SE ESSE^^ de forma mais técnica e é necessário saber exatamente o tipo de valor do parametro
-                cmd.Parameters.Add("_nome", MySqlDbType.VarChar).Value = Nome;
-                cmd.Parameters.Add("_email", MySqlDbType.VarChar).Value = Email;
+                cmd.Parameters.Add("_nome", MySqlDbType.VarChar).Value = _nome;
+                cmd.Parameters.Add("_email", MySqlDbType.VarChar).Value = _email;
                 // LEMBRETE: o valor remete ao nome do campo construído da PROCEDURE, logo é VarChar e não String!!
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
             }
@@ -134,12 +134,33 @@ namespace ClassLabNu
             }
             return cliente;
         }
-        public static List<Cliente> Listar()
+        public static List<Cliente> ListarNome()
         {
             List<Cliente> clientes = new List<Cliente>();
             MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
             cmd.CommandType = System.Data.CommandType.Text;
             cmd.CommandText = "select * from clientes where ativo = 1 order by 2"; // Colocar em ordem na coluna 2 (alfabética)
+            MySqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                clientes.Add(new Cliente(
+                    dr.GetInt32(0),         // IDCLI
+                    dr.GetString(1),        // NOME
+                    dr.GetString(2),        // CPF
+                    dr.GetString(3),        // EMAIL
+                    dr.GetDateTime(4),      // DATACAD
+                    dr.GetBoolean(5)        // ATIVO
+                    ));
+            }
+            return clientes;
+        }
+
+        public static List<Cliente> ListarId()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            MySqlCommand cmd = Banco.Abrir(); // Objeto de conexão MySQL
+            cmd.CommandType = System.Data.CommandType.Text;
+            cmd.CommandText = "select * from clientes where ativo = 1 order by 1"; // Colocar em ordem na coluna 1 (ID)
             MySqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {

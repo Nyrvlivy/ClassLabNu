@@ -22,6 +22,7 @@ namespace ComercialSys91
         private void Form1_Load(object sender, EventArgs e)
         {
             txtNome.Focus();
+
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -45,7 +46,8 @@ namespace ComercialSys91
         private void btnListar_Click(object sender, EventArgs e)
         {
             dgvClientes.Rows.Clear();
-            List<Cliente> listaDeClientes = Cliente.Listar();
+            chBoxNome.Checked = true;
+            List<Cliente> listaDeClientes = Cliente.ListarNome();
             int cont = 0;
             foreach (Cliente cliente in listaDeClientes)
             {
@@ -84,6 +86,7 @@ namespace ComercialSys91
 
                 txtCpf.ReadOnly = false;
                 btnlimpar.Enabled = false;
+                btnDesativar.Enabled = false;
 
                 label6.Enabled = false;
                 label7.Enabled = false;
@@ -107,6 +110,7 @@ namespace ComercialSys91
                     btnAlterar.Enabled = true;
                     btnInserir.Enabled = false;
                     btnlimpar.Enabled = true;
+                    btnDesativar.Enabled = true;
                     label6.Enabled = true;
                     label7.Enabled = true;
 
@@ -131,6 +135,7 @@ namespace ComercialSys91
 
                     btnBuscar.Enabled = true;
                     btnAlterar.Enabled = false;
+                    btnDesativar.Enabled = false;
 
                 }
             }
@@ -176,12 +181,14 @@ namespace ComercialSys91
                 txtCpf.Text = "";
                 txtNome.Text = "";
                 txtEmail.Text = "";
+
                 txtId.ReadOnly = true;
                 label6.Enabled = false;
                 label7.Enabled = false;
                 chkAtivo.Enabled = false;
                 txtCpf.ReadOnly = false;
                 btnAlterar.Enabled = false;
+                btnDesativar.Enabled = false;
             }
         }
 
@@ -199,6 +206,70 @@ namespace ComercialSys91
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void grbInserir_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkAtivo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chBoxId_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chBoxId.Checked == true)
+            {
+                chBoxNome.Checked = false;
+                chBoxId.Checked = true;
+
+                dgvClientes.Rows.Clear();
+                List<Cliente> listaDeClientes = Cliente.ListarId();
+                int cont = 0;
+                foreach (Cliente cliente in listaDeClientes)
+                {
+                    dgvClientes.Rows.Add();
+                    dgvClientes.Rows[cont].Cells[0].Value = cliente.Id.ToString();
+                    dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome.ToString();
+                    dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf.ToString();
+                    dgvClientes.Rows[cont].Cells[3].Value = cliente.Email.ToString();
+                    dgvClientes.Rows[cont].Cells[4].Value = cliente.Ativo;
+                    cont++;
+                }
+            }
+            else
+            {
+                chBoxNome.Checked = true;
+            }
+        }
+
+        private void chBoxNome_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chBoxNome.Checked == true)
+            {
+                chBoxId.Checked = false;
+                chBoxNome.Checked = true;
+
+                dgvClientes.Rows.Clear();
+                List<Cliente> listaDeClientes = Cliente.ListarNome();
+                int cont = 0;
+                foreach (Cliente cliente in listaDeClientes)
+                {
+                    dgvClientes.Rows.Add();
+                    dgvClientes.Rows[cont].Cells[0].Value = cliente.Id.ToString();
+                    dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome.ToString();
+                    dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf.ToString();
+                    dgvClientes.Rows[cont].Cells[3].Value = cliente.Email.ToString();
+                    dgvClientes.Rows[cont].Cells[4].Value = cliente.Ativo;
+                    cont++;
+                }
+            }
+            else
+            {
+                chBoxId.Checked = true;
+            }
         }
     }
 }
