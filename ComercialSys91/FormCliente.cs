@@ -194,5 +194,11 @@ namespace ComercialSys91
         {
 
         }
+
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
