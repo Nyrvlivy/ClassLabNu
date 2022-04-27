@@ -330,6 +330,11 @@ namespace ComercialSys91
             txtCidade.Enabled = true;
             cmBoxUf.Enabled = false;
         }
+
+        private void grbTelefones_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -60,6 +60,11 @@ namespace ComercialSys91
             //Exibe o Formulario de Cliente no Formprincipal
             formProduto.Show();
         }
-                
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            
+        }
     }
 }

@@ -143,8 +143,14 @@ namespace ClassLabNu
 
         public static bool EfetuarLogin(string email, string senha)
         {
+            bool resultado = false;
             // realiza validação e devolve verdadeiro ou falso
-            return false;
+            var cmd = Banco.Abrir();
+            cmd.CommandText = "select * from usuarios where email = '" + email + "' and senha = md5('" + senha + "')'";
+            var dr = cmd.ExecuteReader();  
+
+            
+            return resultado;
         }
         public static List<Usuario> Listar()
         {
