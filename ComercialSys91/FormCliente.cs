@@ -22,6 +22,7 @@ namespace ComercialSys91
         private void Form1_Load(object sender, EventArgs e)
         {
             txtNome.Focus();
+            cmBoxUf.Enabled = false;
 
         }
 
@@ -111,6 +112,9 @@ namespace ComercialSys91
                     btnInserir.Enabled = false;
                     btnlimpar.Enabled = true;
                     btnDesativar.Enabled = true;
+                    btnAlterarCep.Enabled = true;
+                    btnAlterarTel.Enabled = true;
+
                     label6.Enabled = true;
                     label7.Enabled = true;
 
@@ -271,5 +275,61 @@ namespace ComercialSys91
                 chBoxId.Checked = true;
             }
         }
+
+        private void mskTxtCep_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+        }
+
+        private void btnBuscarCep_Click(object sender, EventArgs e)
+        {
+            if (btnBuscar.Text == "&Busca Online")
+            {
+                try
+                {
+                    btnBuscar.Text = "&Buscar Novamente";
+
+                    BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
+                    txtLogradouro.Text = buscacep.TipomaisLogradouro;
+                    txtBairro.Text = buscacep.Bairro;
+                    txtCidade.Text = buscacep.Cidade;
+                    txtUf.Text = buscacep.UF;
+
+                    txtNumero.Text = "";
+                    txtComplemento.Text = "";
+
+                    txtLogradouro.ReadOnly = true;
+                    txtBairro.ReadOnly = true;
+                    txtCidade.ReadOnly = true;
+                    txtUf.ReadOnly = true;
+
+
+
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show($"Ops... " + erro.Message);
+                }
+            }
+        }
+
+        private void txtUf_TextChanged(object sender, EventArgs e)
+        {
+            var indice = cmBoxUf.FindString(txtUf.Text);
+            cmBoxEstado.SelectedIndex = indice;
+            cmBoxUf.SelectedIndex = indice;
+            txtNumero.Focus();
+
+
+        }
+
+        private void btnCadastroManual_Click(object sender, EventArgs e)
+        {
+            txtLogradouro.Enabled = true;
+            txtNumero.Enabled = true;
+            txtBairro.Enabled = true;
+            txtCidade.Enabled = true;
+            cmBoxUf.Enabled = false;
+        }
     }
 }
+

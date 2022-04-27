@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Banco.cs" />
+    <Compile Include="BuscaCep.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="Nivel.cs" />
     <Compile Include="Usuario.cs" />

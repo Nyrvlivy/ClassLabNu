@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCpf = new System.Windows.Forms.TextBox();
@@ -55,27 +55,28 @@
             this.clnAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnlimpar = new System.Windows.Forms.Button();
-            this.grbInserir = new System.Windows.Forms.GroupBox();
+            this.grbDadosGerais = new System.Windows.Forms.GroupBox();
+            this.chBoxId = new System.Windows.Forms.CheckBox();
+            this.chBoxNome = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.grbEndereco = new System.Windows.Forms.GroupBox();
+            this.cmBoxEstado = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grbTelefones = new System.Windows.Forms.GroupBox();
+            this.btnTel = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -91,13 +92,19 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.chBoxNome = new System.Windows.Forms.CheckBox();
-            this.chBoxId = new System.Windows.Forms.CheckBox();
-            this.btnTel = new System.Windows.Forms.Button();
+            this.mskTxtCep = new System.Windows.Forms.MaskedTextBox();
+            this.btnBuscarCep = new System.Windows.Forms.Button();
+            this.txtUf = new System.Windows.Forms.TextBox();
+            this.cmBoxUf = new System.Windows.Forms.ComboBox();
+            this.btnAlterarCep = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.btnAlterarTel = new System.Windows.Forms.Button();
+            this.btnCadastroManual = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
-            this.grbInserir.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.grbDadosGerais.SuspendLayout();
+            this.grbEndereco.SuspendLayout();
+            this.grbTelefones.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtId
@@ -176,12 +183,12 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.Location = new System.Drawing.Point(335, 158);
+            this.btnInserir.Location = new System.Drawing.Point(1015, 622);
             this.btnInserir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(75, 24);
+            this.btnInserir.Size = new System.Drawing.Size(99, 38);
             this.btnInserir.TabIndex = 3;
-            this.btnInserir.Text = "&Inserir";
+            this.btnInserir.Text = "&Inserir Dados";
             this.btnInserir.UseVisualStyleBackColor = true;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
@@ -273,14 +280,14 @@
             this.dgvClientes.AccessibleName = "dgvClientes";
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmIdCli,
@@ -288,14 +295,14 @@
             this.clnCpf,
             this.clnEmail,
             this.clnAtivo});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvClientes.Location = new System.Drawing.Point(448, 36);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
@@ -346,7 +353,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(113, 75);
+            this.btnBuscar.Location = new System.Drawing.Point(104, 75);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(61, 20);
             this.btnBuscar.TabIndex = 18;
@@ -357,7 +364,7 @@
             // btnlimpar
             // 
             this.btnlimpar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnlimpar.Location = new System.Drawing.Point(336, 187);
+            this.btnlimpar.Location = new System.Drawing.Point(336, 156);
             this.btnlimpar.Name = "btnlimpar";
             this.btnlimpar.Size = new System.Drawing.Size(74, 23);
             this.btnlimpar.TabIndex = 19;
@@ -365,38 +372,59 @@
             this.btnlimpar.UseVisualStyleBackColor = true;
             this.btnlimpar.Click += new System.EventHandler(this.btnlimpar_Click);
             // 
-            // grbInserir
+            // grbDadosGerais
             // 
-            this.grbInserir.Controls.Add(this.chBoxId);
-            this.grbInserir.Controls.Add(this.chBoxNome);
-            this.grbInserir.Controls.Add(this.label8);
-            this.grbInserir.Controls.Add(this.dgvClientes);
-            this.grbInserir.Controls.Add(this.txtId);
-            this.grbInserir.Controls.Add(this.txtNome);
-            this.grbInserir.Controls.Add(this.btnlimpar);
-            this.grbInserir.Controls.Add(this.txtCpf);
-            this.grbInserir.Controls.Add(this.btnBuscar);
-            this.grbInserir.Controls.Add(this.txtEmail);
-            this.grbInserir.Controls.Add(this.label1);
-            this.grbInserir.Controls.Add(this.dtpDataCad);
-            this.grbInserir.Controls.Add(this.label2);
-            this.grbInserir.Controls.Add(this.label7);
-            this.grbInserir.Controls.Add(this.label3);
-            this.grbInserir.Controls.Add(this.chkAtivo);
-            this.grbInserir.Controls.Add(this.label4);
-            this.grbInserir.Controls.Add(this.btnDesativar);
-            this.grbInserir.Controls.Add(this.btnInserir);
-            this.grbInserir.Controls.Add(this.btnAlterar);
-            this.grbInserir.Controls.Add(this.label5);
-            this.grbInserir.Controls.Add(this.label6);
-            this.grbInserir.Controls.Add(this.btnListar);
-            this.grbInserir.Location = new System.Drawing.Point(12, 12);
-            this.grbInserir.Name = "grbInserir";
-            this.grbInserir.Size = new System.Drawing.Size(1102, 311);
-            this.grbInserir.TabIndex = 22;
-            this.grbInserir.TabStop = false;
-            this.grbInserir.Text = "Dados Gerais";
-            this.grbInserir.Enter += new System.EventHandler(this.grbInserir_Enter);
+            this.grbDadosGerais.Controls.Add(this.chBoxId);
+            this.grbDadosGerais.Controls.Add(this.chBoxNome);
+            this.grbDadosGerais.Controls.Add(this.label8);
+            this.grbDadosGerais.Controls.Add(this.dgvClientes);
+            this.grbDadosGerais.Controls.Add(this.txtId);
+            this.grbDadosGerais.Controls.Add(this.txtNome);
+            this.grbDadosGerais.Controls.Add(this.btnlimpar);
+            this.grbDadosGerais.Controls.Add(this.txtCpf);
+            this.grbDadosGerais.Controls.Add(this.btnBuscar);
+            this.grbDadosGerais.Controls.Add(this.txtEmail);
+            this.grbDadosGerais.Controls.Add(this.label1);
+            this.grbDadosGerais.Controls.Add(this.dtpDataCad);
+            this.grbDadosGerais.Controls.Add(this.label2);
+            this.grbDadosGerais.Controls.Add(this.label7);
+            this.grbDadosGerais.Controls.Add(this.label3);
+            this.grbDadosGerais.Controls.Add(this.chkAtivo);
+            this.grbDadosGerais.Controls.Add(this.label4);
+            this.grbDadosGerais.Controls.Add(this.btnDesativar);
+            this.grbDadosGerais.Controls.Add(this.btnAlterar);
+            this.grbDadosGerais.Controls.Add(this.label5);
+            this.grbDadosGerais.Controls.Add(this.label6);
+            this.grbDadosGerais.Controls.Add(this.btnListar);
+            this.grbDadosGerais.Location = new System.Drawing.Point(12, 12);
+            this.grbDadosGerais.Name = "grbDadosGerais";
+            this.grbDadosGerais.Size = new System.Drawing.Size(1102, 311);
+            this.grbDadosGerais.TabIndex = 22;
+            this.grbDadosGerais.TabStop = false;
+            this.grbDadosGerais.Text = "Dados Gerais";
+            this.grbDadosGerais.Enter += new System.EventHandler(this.grbInserir_Enter);
+            // 
+            // chBoxId
+            // 
+            this.chBoxId.AutoSize = true;
+            this.chBoxId.Location = new System.Drawing.Point(981, 282);
+            this.chBoxId.Name = "chBoxId";
+            this.chBoxId.Size = new System.Drawing.Size(37, 17);
+            this.chBoxId.TabIndex = 24;
+            this.chBoxId.Text = "ID";
+            this.chBoxId.UseVisualStyleBackColor = true;
+            this.chBoxId.CheckedChanged += new System.EventHandler(this.chBoxId_CheckedChanged);
+            // 
+            // chBoxNome
+            // 
+            this.chBoxNome.AutoSize = true;
+            this.chBoxNome.Location = new System.Drawing.Point(981, 265);
+            this.chBoxNome.Name = "chBoxNome";
+            this.chBoxNome.Size = new System.Drawing.Size(54, 17);
+            this.chBoxNome.TabIndex = 23;
+            this.chBoxNome.Text = "Nome";
+            this.chBoxNome.UseVisualStyleBackColor = true;
+            this.chBoxNome.CheckedChanged += new System.EventHandler(this.chBoxNome_CheckedChanged);
             // 
             // label8
             // 
@@ -407,73 +435,44 @@
             this.label8.TabIndex = 22;
             this.label8.Text = "Ordenar por:";
             // 
-            // groupBox1
+            // grbEndereco
             // 
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.textBox12);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label25);
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.textBox11);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Location = new System.Drawing.Point(12, 329);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 282);
-            this.groupBox1.TabIndex = 23;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Endereço";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.grbEndereco.Controls.Add(this.btnCadastroManual);
+            this.grbEndereco.Controls.Add(this.comboBox3);
+            this.grbEndereco.Controls.Add(this.label27);
+            this.grbEndereco.Controls.Add(this.btnAlterarCep);
+            this.grbEndereco.Controls.Add(this.cmBoxUf);
+            this.grbEndereco.Controls.Add(this.txtUf);
+            this.grbEndereco.Controls.Add(this.btnBuscarCep);
+            this.grbEndereco.Controls.Add(this.mskTxtCep);
+            this.grbEndereco.Controls.Add(this.cmBoxEstado);
+            this.grbEndereco.Controls.Add(this.label26);
+            this.grbEndereco.Controls.Add(this.txtBairro);
+            this.grbEndereco.Controls.Add(this.txtNumero);
+            this.grbEndereco.Controls.Add(this.label25);
+            this.grbEndereco.Controls.Add(this.label24);
+            this.grbEndereco.Controls.Add(this.label23);
+            this.grbEndereco.Controls.Add(this.label22);
+            this.grbEndereco.Controls.Add(this.txtCidade);
+            this.grbEndereco.Controls.Add(this.txtComplemento);
+            this.grbEndereco.Controls.Add(this.label21);
+            this.grbEndereco.Controls.Add(this.txtLogradouro);
+            this.grbEndereco.Controls.Add(this.label18);
+            this.grbEndereco.Controls.Add(this.label19);
+            this.grbEndereco.Controls.Add(this.label20);
+            this.grbEndereco.Location = new System.Drawing.Point(12, 329);
+            this.grbEndereco.Name = "grbEndereco";
+            this.grbEndereco.Size = new System.Drawing.Size(500, 286);
+            this.grbEndereco.TabIndex = 23;
+            this.grbEndereco.TabStop = false;
+            this.grbEndereco.Text = "Endereço";
+            this.grbEndereco.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // comboBox4
+            // cmBoxEstado
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.comboBox4.Location = new System.Drawing.Point(407, 165);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(56, 21);
-            this.comboBox4.TabIndex = 38;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmBoxEstado.Enabled = false;
+            this.cmBoxEstado.FormattingEnabled = true;
+            this.cmBoxEstado.Items.AddRange(new object[] {
             "Acre",
             "Alagoas",
             "Amapá",
@@ -501,10 +500,10 @@
             "São Paulo",
             "Sergipe",
             "Tocantins"});
-            this.comboBox3.Location = new System.Drawing.Point(102, 166);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(268, 21);
-            this.comboBox3.TabIndex = 38;
+            this.cmBoxEstado.Location = new System.Drawing.Point(102, 166);
+            this.cmBoxEstado.Name = "cmBoxEstado";
+            this.cmBoxEstado.Size = new System.Drawing.Size(268, 21);
+            this.cmBoxEstado.TabIndex = 38;
             // 
             // label26
             // 
@@ -515,23 +514,25 @@
             this.label26.TabIndex = 36;
             this.label26.Text = "Bairro:";
             // 
-            // textBox12
+            // txtBairro
             // 
-            this.textBox12.Location = new System.Drawing.Point(199, 117);
-            this.textBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox12.MaxLength = 60;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(264, 20);
-            this.textBox12.TabIndex = 35;
+            this.txtBairro.Location = new System.Drawing.Point(199, 117);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBairro.MaxLength = 60;
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.ReadOnly = true;
+            this.txtBairro.Size = new System.Drawing.Size(264, 20);
+            this.txtBairro.TabIndex = 35;
             // 
-            // textBox5
+            // txtNumero
             // 
-            this.textBox5.Location = new System.Drawing.Point(102, 117);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox5.MaxLength = 11;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(49, 20);
-            this.textBox5.TabIndex = 34;
+            this.txtNumero.Location = new System.Drawing.Point(102, 117);
+            this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNumero.MaxLength = 11;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.ReadOnly = true;
+            this.txtNumero.Size = new System.Drawing.Size(49, 20);
+            this.txtNumero.TabIndex = 34;
             // 
             // label25
             // 
@@ -542,17 +543,10 @@
             this.label25.TabIndex = 33;
             this.label25.Text = "Número:";
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(102, 67);
-            this.maskedTextBox1.Mask = "00000-999";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(61, 20);
-            this.maskedTextBox1.TabIndex = 32;
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.Enabled = false;
             this.label24.Location = new System.Drawing.Point(377, 168);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(24, 13);
@@ -577,24 +571,26 @@
             this.label22.TabIndex = 29;
             this.label22.Text = "Estado:";
             // 
-            // textBox11
+            // txtCidade
             // 
-            this.textBox11.Location = new System.Drawing.Point(102, 141);
-            this.textBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox11.MaxLength = 60;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(361, 20);
-            this.textBox11.TabIndex = 28;
+            this.txtCidade.Location = new System.Drawing.Point(102, 141);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCidade.MaxLength = 60;
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.ReadOnly = true;
+            this.txtCidade.Size = new System.Drawing.Size(361, 20);
+            this.txtCidade.TabIndex = 28;
             // 
-            // textBox9
+            // txtComplemento
             // 
-            this.textBox9.Location = new System.Drawing.Point(102, 192);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.MaxLength = 60;
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(361, 20);
-            this.textBox9.TabIndex = 26;
+            this.txtComplemento.Location = new System.Drawing.Point(102, 192);
+            this.txtComplemento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtComplemento.MaxLength = 60;
+            this.txtComplemento.Multiline = true;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.ReadOnly = true;
+            this.txtComplemento.Size = new System.Drawing.Size(361, 20);
+            this.txtComplemento.TabIndex = 26;
             // 
             // label21
             // 
@@ -605,15 +601,16 @@
             this.label21.TabIndex = 24;
             this.label21.Text = "Adicionar Endereço:";
             // 
-            // textBox7
+            // txtLogradouro
             // 
-            this.textBox7.Location = new System.Drawing.Point(102, 92);
-            this.textBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox7.MaxLength = 60;
-            this.textBox7.Multiline = true;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(361, 20);
-            this.textBox7.TabIndex = 10;
+            this.txtLogradouro.Location = new System.Drawing.Point(102, 92);
+            this.txtLogradouro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLogradouro.MaxLength = 60;
+            this.txtLogradouro.Multiline = true;
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.ReadOnly = true;
+            this.txtLogradouro.Size = new System.Drawing.Size(361, 20);
+            this.txtLogradouro.TabIndex = 10;
             // 
             // label18
             // 
@@ -642,30 +639,42 @@
             this.label20.TabIndex = 13;
             this.label20.Text = "Complemento:";
             // 
-            // groupBox2
+            // grbTelefones
             // 
-            this.groupBox2.Controls.Add(this.btnTel);
-            this.groupBox2.Controls.Add(this.label14);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Location = new System.Drawing.Point(518, 329);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(596, 282);
-            this.groupBox2.TabIndex = 24;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Telefones";
+            this.grbTelefones.Controls.Add(this.btnAlterarTel);
+            this.grbTelefones.Controls.Add(this.btnTel);
+            this.grbTelefones.Controls.Add(this.label14);
+            this.grbTelefones.Controls.Add(this.textBox3);
+            this.grbTelefones.Controls.Add(this.textBox4);
+            this.grbTelefones.Controls.Add(this.label15);
+            this.grbTelefones.Controls.Add(this.label16);
+            this.grbTelefones.Controls.Add(this.comboBox2);
+            this.grbTelefones.Controls.Add(this.label17);
+            this.grbTelefones.Controls.Add(this.label13);
+            this.grbTelefones.Controls.Add(this.textBox2);
+            this.grbTelefones.Controls.Add(this.textBox1);
+            this.grbTelefones.Controls.Add(this.label12);
+            this.grbTelefones.Controls.Add(this.label11);
+            this.grbTelefones.Controls.Add(this.comboBox1);
+            this.grbTelefones.Controls.Add(this.label10);
+            this.grbTelefones.Controls.Add(this.label9);
+            this.grbTelefones.Location = new System.Drawing.Point(518, 329);
+            this.grbTelefones.Name = "grbTelefones";
+            this.grbTelefones.Size = new System.Drawing.Size(596, 286);
+            this.grbTelefones.TabIndex = 24;
+            this.grbTelefones.TabStop = false;
+            this.grbTelefones.Text = "Telefones";
+            // 
+            // btnTel
+            // 
+            this.btnTel.FlatAppearance.BorderSize = 0;
+            this.btnTel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTel.Location = new System.Drawing.Point(497, 195);
+            this.btnTel.Name = "btnTel";
+            this.btnTel.Size = new System.Drawing.Size(75, 23);
+            this.btnTel.TabIndex = 38;
+            this.btnTel.Text = "apagueaqui";
+            this.btnTel.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -812,38 +821,122 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "Adicionar Telefone:";
             // 
-            // chBoxNome
+            // mskTxtCep
             // 
-            this.chBoxNome.AutoSize = true;
-            this.chBoxNome.Location = new System.Drawing.Point(981, 265);
-            this.chBoxNome.Name = "chBoxNome";
-            this.chBoxNome.Size = new System.Drawing.Size(54, 17);
-            this.chBoxNome.TabIndex = 23;
-            this.chBoxNome.Text = "Nome";
-            this.chBoxNome.UseVisualStyleBackColor = true;
-            this.chBoxNome.CheckedChanged += new System.EventHandler(this.chBoxNome_CheckedChanged);
+            this.mskTxtCep.Location = new System.Drawing.Point(102, 68);
+            this.mskTxtCep.Mask = "00000-999";
+            this.mskTxtCep.Name = "mskTxtCep";
+            this.mskTxtCep.Size = new System.Drawing.Size(59, 20);
+            this.mskTxtCep.TabIndex = 40;
+            this.mskTxtCep.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskTxtCep_MaskInputRejected);
             // 
-            // chBoxId
+            // btnBuscarCep
             // 
-            this.chBoxId.AutoSize = true;
-            this.chBoxId.Location = new System.Drawing.Point(981, 282);
-            this.chBoxId.Name = "chBoxId";
-            this.chBoxId.Size = new System.Drawing.Size(37, 17);
-            this.chBoxId.TabIndex = 24;
-            this.chBoxId.Text = "ID";
-            this.chBoxId.UseVisualStyleBackColor = true;
-            this.chBoxId.CheckedChanged += new System.EventHandler(this.chBoxId_CheckedChanged);
+            this.btnBuscarCep.Location = new System.Drawing.Point(167, 67);
+            this.btnBuscarCep.Name = "btnBuscarCep";
+            this.btnBuscarCep.Size = new System.Drawing.Size(163, 21);
+            this.btnBuscarCep.TabIndex = 41;
+            this.btnBuscarCep.Text = "&Busca Online";
+            this.btnBuscarCep.UseVisualStyleBackColor = true;
+            this.btnBuscarCep.Click += new System.EventHandler(this.btnBuscarCep_Click);
             // 
-            // btnTel
+            // txtUf
             // 
-            this.btnTel.FlatAppearance.BorderSize = 0;
-            this.btnTel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTel.Location = new System.Drawing.Point(497, 195);
-            this.btnTel.Name = "btnTel";
-            this.btnTel.Size = new System.Drawing.Size(75, 23);
-            this.btnTel.TabIndex = 38;
-            this.btnTel.Text = "apagueaqui";
-            this.btnTel.UseVisualStyleBackColor = true;
+            this.txtUf.Location = new System.Drawing.Point(407, 167);
+            this.txtUf.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUf.MaxLength = 60;
+            this.txtUf.Name = "txtUf";
+            this.txtUf.ReadOnly = true;
+            this.txtUf.Size = new System.Drawing.Size(56, 20);
+            this.txtUf.TabIndex = 39;
+            this.txtUf.TextChanged += new System.EventHandler(this.txtUf_TextChanged);
+            // 
+            // cmBoxUf
+            // 
+            this.cmBoxUf.Enabled = false;
+            this.cmBoxUf.FormattingEnabled = true;
+            this.cmBoxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cmBoxUf.Location = new System.Drawing.Point(407, 166);
+            this.cmBoxUf.Name = "cmBoxUf";
+            this.cmBoxUf.Size = new System.Drawing.Size(56, 21);
+            this.cmBoxUf.TabIndex = 43;
+            // 
+            // btnAlterarCep
+            // 
+            this.btnAlterarCep.Enabled = false;
+            this.btnAlterarCep.Location = new System.Drawing.Point(102, 244);
+            this.btnAlterarCep.Name = "btnAlterarCep";
+            this.btnAlterarCep.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterarCep.TabIndex = 44;
+            this.btnAlterarCep.Text = "&Alterar";
+            this.btnAlterarCep.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(23, 220);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.TabIndex = 45;
+            this.label27.Text = "Tipo:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Residencial",
+            "Comercial"});
+            this.comboBox3.Location = new System.Drawing.Point(102, 217);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(102, 21);
+            this.comboBox3.TabIndex = 46;
+            // 
+            // btnAlterarTel
+            // 
+            this.btnAlterarTel.Enabled = false;
+            this.btnAlterarTel.Location = new System.Drawing.Point(80, 244);
+            this.btnAlterarTel.Name = "btnAlterarTel";
+            this.btnAlterarTel.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterarTel.TabIndex = 47;
+            this.btnAlterarTel.Text = "&Alterar";
+            this.btnAlterarTel.UseVisualStyleBackColor = true;
+            // 
+            // btnCadastroManual
+            // 
+            this.btnCadastroManual.Location = new System.Drawing.Point(336, 244);
+            this.btnCadastroManual.Name = "btnCadastroManual";
+            this.btnCadastroManual.Size = new System.Drawing.Size(127, 21);
+            this.btnCadastroManual.TabIndex = 47;
+            this.btnCadastroManual.Text = "&Cadastro Manual";
+            this.btnCadastroManual.UseVisualStyleBackColor = true;
+            this.btnCadastroManual.Click += new System.EventHandler(this.btnCadastroManual_Click);
             // 
             // FormCliente
             // 
@@ -851,21 +944,22 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnlimpar;
-            this.ClientSize = new System.Drawing.Size(1126, 635);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.grbInserir);
+            this.ClientSize = new System.Drawing.Size(1137, 671);
+            this.Controls.Add(this.grbTelefones);
+            this.Controls.Add(this.grbEndereco);
+            this.Controls.Add(this.grbDadosGerais);
+            this.Controls.Add(this.btnInserir);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormCliente";
             this.Text = "Registro de Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
-            this.grbInserir.ResumeLayout(false);
-            this.grbInserir.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.grbDadosGerais.ResumeLayout(false);
+            this.grbDadosGerais.PerformLayout();
+            this.grbEndereco.ResumeLayout(false);
+            this.grbEndereco.PerformLayout();
+            this.grbTelefones.ResumeLayout(false);
+            this.grbTelefones.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -897,22 +991,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clnCpf;
         private System.Windows.Forms.DataGridViewTextBoxColumn clnEmail;
         private System.Windows.Forms.DataGridViewCheckBoxColumn clnAtivo;
-        private System.Windows.Forms.GroupBox grbInserir;
+        private System.Windows.Forms.GroupBox grbDadosGerais;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox grbEndereco;
+        private System.Windows.Forms.GroupBox grbTelefones;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtComplemento;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtLogradouro;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
@@ -929,13 +1022,21 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmBoxEstado;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.CheckBox chBoxId;
         private System.Windows.Forms.CheckBox chBoxNome;
         private System.Windows.Forms.Button btnTel;
+        private System.Windows.Forms.MaskedTextBox mskTxtCep;
+        private System.Windows.Forms.Button btnBuscarCep;
+        private System.Windows.Forms.TextBox txtUf;
+        private System.Windows.Forms.ComboBox cmBoxUf;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Button btnAlterarCep;
+        private System.Windows.Forms.Button btnAlterarTel;
+        private System.Windows.Forms.Button btnCadastroManual;
     }
 }
 
