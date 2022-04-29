@@ -251,7 +251,7 @@ namespace ComercialSys91
         private void btnDesativar_Click(object sender, EventArgs e)
         {
             {
-                DialogResult alertaExclusao = MessageBox.Show($"Os dados do Cliente " + txtId.Text + " serão excluídos permanentemente! Desega continuar?", "Excluir Aluno...",
+                DialogResult alertaExclusao = MessageBox.Show($"O(a) Cliente: " + txtNome.Text + " (ID " + txtId.Text + ") será excluído(a) permanentemente! Deseja continuar?", "Excluir Cliente...",
                                                    MessageBoxButtons.YesNo,
                                                    MessageBoxIcon.Question);
 
@@ -260,7 +260,7 @@ namespace ComercialSys91
                     var comm = Banco.Abrir();
                     comm.CommandText = "delete from clientes where id = " + txtId.Text;
                     comm.ExecuteNonQuery();
-                    MessageBox.Show("Aluno excluído com sucesso!");
+                    MessageBox.Show("Cliente excluído(a) com sucesso!");
                 }
 
             }
