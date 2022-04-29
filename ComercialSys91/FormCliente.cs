@@ -22,21 +22,40 @@ namespace ComercialSys91
         private void Form1_Load(object sender, EventArgs e)
         {
             txtNome.Focus();
-            cmBoxUf.Enabled = false;
-            cmbTipoTel.SelectedIndex = 0;
+            cmbUf.Enabled = false;
+            cmbTipoEnd.SelectedIndex = 0;
 
         }
-
-        private void btnInserir_Click(object sender, EventArgs e)
+        private void btnNovoCliente_Click(object sender, EventArgs e)
         {
             Cliente c = new Cliente(txtNome.Text, txtCpf.Text, txtEmail.Text);
 
             try
             {
                 c.Inserir();
-                MessageBox.Show("Cliente gravado com sucesso!");
-                btnlimpar_Click(sender, e); //sender = ação de enviar; e = evento (clique)
+                MessageBox.Show($"Dados gerais de " + txtNome.Text + " (ID " + txtId.Text + ") gravados com sucesso!");
 
+                DialogResult desejaContinuar = MessageBox.Show($"Deseja adicionar dados de endereço e contato?", "Adicionar",
+                                               MessageBoxButtons.YesNoCancel,
+                                               MessageBoxIcon.Question);
+
+                if (desejaContinuar == DialogResult.Yes && txtId.Text != string.Empty)
+                {
+                    // Liberar Acesso a Endereço e Contato(Telefones)
+                }
+                else
+                {
+                    if ((desejaContinuar == DialogResult.No && txtId.Text != string.Empty))
+                    {
+                        MessageBox.Show("Essa é uma parte importante do cadastro! Portanto, EVITE não cadastrar contato de clientes!");
+                    }
+                    if ((desejaContinuar == DialogResult.Cancel && txtId.Text != string.Empty))
+                    {
+
+                    }
+                }
+
+                btnlimpar_Click(sender, e); //sender = ação de enviar; e = evento (clique)
 
             }
             catch (MySql.Data.MySqlClient.MySqlException error)
@@ -44,6 +63,10 @@ namespace ComercialSys91
                 MessageBox.Show($"Olá, amiguinho! Ooops, deu erro: {error.Message}");
                 //("Falha na inserção. Não foi possível gravar dados corretamente!");
             }
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
 
         }
         private void btnListar_Click(object sender, EventArgs e)
@@ -73,14 +96,11 @@ namespace ComercialSys91
                 txtId.Focus();
                 btnBuscar.Text = "&Buscar";
 
-                txtId.Clear();
-                txtCpf.Clear();
-                txtNome.Clear();
-                txtEmail.Clear();
+                ClearDadosGerais();
 
                 txtCpf.ReadOnly = false;
                 btnlimpar.Enabled = false;
-                btnDesativar.Enabled = false;
+                btnExcluir.Enabled = false;
 
                 label6.Enabled = false;
                 label7.Enabled = false;
@@ -104,10 +124,12 @@ namespace ComercialSys91
                         chkAtivo.Checked = cliente.Ativo;
 
                         txtCpf.ReadOnly = true;
+
+                        // Mudar Depois
                         btnAlterar.Enabled = true;
                         btnInserir.Enabled = false;
                         btnlimpar.Enabled = true;
-                        btnDesativar.Enabled = true;
+                        btnExcluir.Enabled = true;
                         btnAlterarCep.Enabled = true;
                         btnAlterarTel.Enabled = true;
 
@@ -141,7 +163,7 @@ namespace ComercialSys91
 
                         btnBuscar.Enabled = true;
                         btnAlterar.Enabled = false;
-                        btnDesativar.Enabled = false;
+                        btnExcluir.Enabled = false;
                     }
                 }
             }
@@ -150,10 +172,7 @@ namespace ComercialSys91
         {
             txtNome.Focus();
 
-            txtId.Clear();
-            txtNome.Clear();
-            txtCpf.Clear();
-            txtEmail.Clear();
+            ClearDadosGerais();
 
             btnBuscar.Text = "...";
             label6.Enabled = false;
@@ -179,10 +198,8 @@ namespace ComercialSys91
             {
                 MessageBox.Show("Falha na alteração");
                 btnBuscar.Text = "...";
-                txtId.Clear();
-                txtCpf.Clear();
-                txtNome.Clear();
-                txtEmail.Clear();
+
+                ClearDadosGerais();
 
                 txtId.ReadOnly = true;
                 label6.Enabled = false;
@@ -190,7 +207,7 @@ namespace ComercialSys91
                 chkAtivo.Enabled = false;
                 txtCpf.ReadOnly = false;
                 btnAlterar.Enabled = false;
-                btnDesativar.Enabled = false;
+                btnExcluir.Enabled = false;
             }
         }
 
@@ -248,17 +265,17 @@ namespace ComercialSys91
             }
         }
 
-        private void btnDesativar_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
             {
-                DialogResult alertaExclusao = MessageBox.Show($"O(a) Cliente: " + txtNome.Text + " (ID " + txtId.Text + ") será excluído(a) permanentemente! Deseja continuar?", "Excluir Cliente...",
-                                                   MessageBoxButtons.YesNo,
-                                                   MessageBoxIcon.Question);
+                DialogResult alertaExclusao = MessageBox.Show($"O(a) Cliente: " + txtNome.Text + " (ID " + txtId.Text + ") será excluído(a) permanentemente! Deseja continuar?", "Tchau",
+                                              MessageBoxButtons.YesNo,
+                                              MessageBoxIcon.Question);
 
                 if (alertaExclusao == DialogResult.Yes && txtId.Text != string.Empty)
                 {
                     var comm = Banco.Abrir();
-                    comm.CommandText = "delete from clientes where id = " + txtId.Text;
+                    comm.CommandText = "delete from clientes where idCli = " + txtId.Text;
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Cliente excluído(a) com sucesso!");
                 }
@@ -270,20 +287,13 @@ namespace ComercialSys91
         private void btnBuscarOnline_Click(object sender, EventArgs e)
         {
             // Botões 
+            btnBuscar.Text = "&Buscar";
             btnBuscar.Enabled = false;
             btnBuscarNovamente.Visible = true;
             btnBuscarNovamente.Enabled = true;
 
             // Caixas de Texto
-            lbCep.Enabled = true;
-            lbLogradouro.Enabled = true;
-            lbNumero.Enabled = true;
-            lbBairro.Enabled = true;
-            lbCidade.Enabled = true;
-            lbEstado.Enabled = true;
-            lbUf.Enabled = true;
-            lbComplemento.Enabled = true;
-            lbTipo.Enabled = true;
+            EnabledlblEnderecos();
 
             mskTxtCep.Enabled = true;
             mskTxtCep.ReadOnly = false;
@@ -300,67 +310,26 @@ namespace ComercialSys91
                     btnBuscarNovamente.Text = "&Buscar Novamente";
 
                     // Busca CEP no banco
-                    BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
-                    txtLogradouro.Text = buscacep.TipomaisLogradouro;
-                    txtBairro.Text = buscacep.Bairro;
-                    txtCidade.Text = buscacep.Cidade;
-                    txtUf.Text = buscacep.UF;
-
-                    // Campos que recebem o CEP
-                    txtLogradouro.ReadOnly = true;
-                    txtBairro.ReadOnly = true;
-                    txtCidade.ReadOnly = true;
-                    txtUf.ReadOnly = true;
-
+                    BuscaCep();
+                    // ReadOnly para campos que o banco de dados traz
+                    ReadOnlyEnderecosSimples();
                     // Campos Alteráveis
-                    txtNumero.ReadOnly = false;
-                    txtNumero.Enabled = true;
-                    txtComplemento.ReadOnly = false;
-                    txtComplemento.Enabled = true;
-                    cmbTipoTel.Enabled = true;
-
-                    // Campos para editar
-                    txtNumero.Clear();
-                    txtComplemento.Clear();
+                    CamposAlteraveisEndereco();
                 }
                 catch { }
             else
             {
-                // Busca CEP no banco
-                BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
-                txtLogradouro.Text = buscacep.TipomaisLogradouro;
-                txtBairro.Text = buscacep.Bairro;
-                txtCidade.Text = buscacep.Cidade;
-                txtUf.Text = buscacep.UF;
-
-                // Campos que recebem o CEP
-                txtLogradouro.ReadOnly = true;
-                txtBairro.ReadOnly = true;
-                txtCidade.ReadOnly = true;
-                txtUf.ReadOnly = true;
-
-                // Campos Alteráveis
-                txtNumero.ReadOnly = false;
-                txtNumero.Enabled = true;
-                txtComplemento.ReadOnly = false;
-                txtComplemento.Enabled = true;
-                cmbTipoTel.Enabled = true;
-                cmBoxEstado.SelectedItem = null;
-                cmBoxUf.SelectedItem = null;
-                txtComplemento.Clear();
-                cmbTipoTel.SelectedIndex = 0;
-
-                // Campos para editar
-                txtNumero.Clear();
-                txtComplemento.Clear();
+                BuscaCep();
+                ReadOnlyEnderecosSimples();
+                CamposAlteraveisEndereco();
             }
         }
 
         private void txtUf_TextChanged(object sender, EventArgs e)
         {
-            var indice = cmBoxUf.FindString(txtUf.Text);
-            cmBoxEstado.SelectedIndex = indice;
-            cmBoxUf.SelectedIndex = indice;
+            var indice = cmbUf.FindString(txtUf.Text);
+            cmbEstado.SelectedIndex = indice;
+            cmbUf.SelectedIndex = indice;
             txtNumero.Focus();
 
 
@@ -373,7 +342,81 @@ namespace ComercialSys91
             btnBuscarNovamente.Visible = false;
             btnBuscarNovamente.Enabled = false;
 
-            // Caixas de Texto
+            // CEP           
+            mskTxtCep.Enabled = true;
+            mskTxtCep.ReadOnly = false;
+
+            ReadOnlyFalseEnderecos();
+            EnabledEnderecos();
+            ClearEnderecosTodos();
+
+        }
+        private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var index = cmbEstado.SelectedIndex;
+            cmbUf.SelectedIndex = index;
+        }
+
+
+
+
+
+        /// <summary>
+        /// 
+        /// 
+        ///         ABAIXO: 
+        ///                     COMANDOS DE LIMPEZA E FORMATAÇÃO DE FERRAMENTAS
+        /// 
+        /// 
+        /// </summary>
+
+        private void BuscaCep()
+        {
+            BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
+            txtLogradouro.Text = buscacep.TipomaisLogradouro;
+            txtBairro.Text = buscacep.Bairro;
+            txtCidade.Text = buscacep.Cidade;
+            txtUf.Text = buscacep.UF;
+        }
+
+        private void CamposAlteraveisEndereco()
+        {
+            // Campos Alteráveis
+            txtNumero.ReadOnly = false;
+            txtComplemento.ReadOnly = false;
+
+            txtNumero.Enabled = true;
+            txtComplemento.Enabled = true;
+            cmbTipoEnd.Enabled = true;
+
+            cmbUf.SelectedItem = null;
+            cmbEstado.SelectedItem = null;
+            cmbTipoEnd.SelectedIndex = 0;
+
+            // Campos para editar                
+            txtNumero.Clear();
+            txtComplemento.Clear();
+        }
+        private void ClearDadosGerais()
+        {
+            txtId.Clear();
+            txtCpf.Clear();
+            txtNome.Clear();
+            txtEmail.Clear();
+        }
+        private void ReadOnlyFalseEnderecos()
+        {
+            // ReadOnly false
+            mskTxtCep.ReadOnly = false;
+            txtLogradouro.ReadOnly = false;
+            txtNumero.ReadOnly = false;
+            txtBairro.ReadOnly = false;
+            txtCidade.ReadOnly = false;
+            txtComplemento.ReadOnly = false;
+        }
+
+        private void EnabledlblEnderecos()
+        {
             lbCep.Enabled = true;
             lbLogradouro.Enabled = true;
             lbNumero.Enabled = true;
@@ -383,45 +426,55 @@ namespace ComercialSys91
             lbUf.Enabled = true;
             lbComplemento.Enabled = true;
             lbTipo.Enabled = true;
-
-            mskTxtCep.Enabled = true;
-            mskTxtCep.ReadOnly = false;
-
-            // Enabled 
-
+        }
+        private void EnabledEnderecos()
+        {
+            // Enabled true (menos Uf que é acoplado ao Estado)
             mskTxtCep.Enabled = true;
             txtLogradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtBairro.Enabled = true;
             txtCidade.Enabled = true;
-            cmBoxEstado.Enabled = true;
-            cmBoxUf.Enabled = false;
+            cmbEstado.Enabled = true;
+            cmbUf.Enabled = false;
             txtComplemento.Enabled = true;
-            cmbTipoTel.Enabled = true;
+            cmbTipoEnd.Enabled = true;
+        }
 
-            // ReadOnly
-            mskTxtCep.ReadOnly = false;
-            txtLogradouro.ReadOnly = false;
-            txtNumero.ReadOnly = false;
-            txtBairro.ReadOnly = false;
-            txtCidade.ReadOnly = false;
-            txtComplemento.ReadOnly = false;
-
-            // Campos para editar
+        private void ReadOnlyEnderecosSimples()
+        {
+            txtLogradouro.ReadOnly = true;
+            txtBairro.ReadOnly = true;
+            txtCidade.ReadOnly = true;
+            txtUf.ReadOnly = true;
+        }
+        private void ClearEnderecosTodos()
+        {
+            // Clear
             mskTxtCep.Clear();
             txtLogradouro.Clear();
             txtNumero.Clear();
             txtBairro.Clear();
             txtCidade.Clear();
-            cmBoxEstado.SelectedItem = null;
-            cmBoxUf.SelectedItem = null;
+            cmbEstado.SelectedItem = null;
+            cmbUf.SelectedItem = null;
             txtComplemento.Clear();
-            cmbTipoTel.SelectedIndex = 0;
+            cmbTipoEnd.SelectedIndex = 0;
         }
-        private void cmBoxEstado_SelectedIndexChanged(object sender, EventArgs e)
+        private void ClearTelefones()
         {
-            var index = cmBoxEstado.SelectedIndex;
-            cmBoxUf.SelectedIndex = index;
+            cmbTipoTel1.SelectedItem = null;
+            cmbTipoTel2.SelectedItem = null;
+            cmbTipoTel3.SelectedItem = null;
+            cmbTipoTel4.SelectedItem = null;
+            txtDDD1.Clear();
+            txtDDD2.Clear();
+            txtDDD3.Clear();
+            txtDDD4.Clear();
+            txtTel1.Clear();
+            txtTel2.Clear();
+            txtTel3.Clear();
+            txtTel4.Clear();
         }
 
         private void label6_Click(object sender, EventArgs e) { }
@@ -434,6 +487,8 @@ namespace ComercialSys91
         private void grbInserir_Enter(object sender, EventArgs e) { }
         private void chkAtivo_CheckedChanged(object sender, EventArgs e) { }
         private void label11_Click(object sender, EventArgs e) { }
+        private void cmbUf_SelectedIndexChanged(object sender, EventArgs e) { }
+
     }
 }
 
