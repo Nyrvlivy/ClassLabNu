@@ -24,6 +24,7 @@ namespace ComercialSys91
             txtNome.Focus();
             cmbUf.Enabled = false;
             cmbTipoEnd.SelectedIndex = 0;
+            btnlimpar.Enabled = false;
 
         }
         private void btnNovoCliente_Click(object sender, EventArgs e)
@@ -33,29 +34,30 @@ namespace ComercialSys91
             try
             {
                 c.Inserir();
-                MessageBox.Show($"Dados gerais de " + txtNome.Text + " (ID " + txtId.Text + ") gravados com sucesso!");
+                MessageBox.Show($"Dados gerais de " + txtNome.Text + " (ID " + c.Id + ") gravados com sucesso!");
+                LimparGridCliente();
 
                 DialogResult desejaContinuar = MessageBox.Show($"Deseja adicionar dados de endereço e contato?", "Adicionar",
-                                               MessageBoxButtons.YesNoCancel,
+                                               MessageBoxButtons.YesNo,
                                                MessageBoxIcon.Question);
 
-                if (desejaContinuar == DialogResult.Yes && txtId.Text != string.Empty)
+                if (desejaContinuar == DialogResult.Yes)
                 {
-                    // Liberar Acesso a Endereço e Contato(Telefones)
+                    grbEndereco.Enabled = true;
+                    grbTelefones.Enabled = true;
                 }
                 else
                 {
-                    if ((desejaContinuar == DialogResult.No && txtId.Text != string.Empty))
+                    if (desejaContinuar == DialogResult.No)
                     {
                         MessageBox.Show("Essa é uma parte importante do cadastro! Portanto, EVITE não cadastrar contato de clientes!");
+                        LimparDadosGerais();
+                        grbEndereco.Enabled = false;
+                        grbTelefones.Enabled = false;
                     }
-                    if ((desejaContinuar == DialogResult.Cancel && txtId.Text != string.Empty))
-                    {
 
-                    }
                 }
 
-                btnlimpar_Click(sender, e); //sender = ação de enviar; e = evento (clique)
 
             }
             catch (MySql.Data.MySqlClient.MySqlException error)
@@ -71,20 +73,7 @@ namespace ComercialSys91
         }
         private void btnListar_Click(object sender, EventArgs e)
         {
-            dgvClientes.Rows.Clear();
-            chBoxNome.Checked = true;
-            List<Cliente> listaDeClientes = Cliente.ListarNome();
-            int cont = 0;
-            foreach (Cliente cliente in listaDeClientes)
-            {
-                dgvClientes.Rows.Add();
-                dgvClientes.Rows[cont].Cells[0].Value = cliente.Id.ToString();
-                dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome.ToString();
-                dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf.ToString();
-                dgvClientes.Rows[cont].Cells[3].Value = cliente.Email.ToString();
-                dgvClientes.Rows[cont].Cells[4].Value = cliente.Ativo;
-                cont++;
-            }
+            LimparGridCliente();
         }
 
 
@@ -99,17 +88,23 @@ namespace ComercialSys91
                 ClearDadosGerais();
 
                 txtCpf.ReadOnly = false;
-                btnlimpar.Enabled = false;
                 btnExcluir.Enabled = false;
 
                 label6.Enabled = false;
                 label7.Enabled = false;
+
+                btnlimpar.Text = "&Cancelar";
+                btnlimpar.Enabled = true;
             }
             else
             {
                 try
                 {
                     Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtId.Text));
+                    btnlimpar.Text = "&Limpar";
+                    grbEndereco.Enabled = true;
+                    grbTelefones.Enabled = true;
+                    LimparGridCliente();
 
                     if (cliente.Id > 0)
                     {
@@ -128,7 +123,6 @@ namespace ComercialSys91
                         // Mudar Depois
                         btnAlterar.Enabled = true;
                         btnInserir.Enabled = false;
-                        btnlimpar.Enabled = true;
                         btnExcluir.Enabled = true;
                         btnAlterarCep.Enabled = true;
                         btnAlterarTel.Enabled = true;
@@ -149,7 +143,11 @@ namespace ComercialSys91
                 {
                     {
                         MessageBox.Show("Digite um código válido!");
+
                         btnBuscar.Text = "...";
+
+                        btnlimpar.Enabled = false;
+                        btnlimpar.Text = "&Limpar";
 
                         txtId.Focus();
                         txtId.Clear();
@@ -170,19 +168,9 @@ namespace ComercialSys91
         }
         private void btnlimpar_Click(object sender, EventArgs e)
         {
-            txtNome.Focus();
-
-            ClearDadosGerais();
-
-            btnBuscar.Text = "...";
-            label6.Enabled = false;
-            label7.Enabled = false;
-            txtId.ReadOnly = true;
-            txtCpf.ReadOnly = false;
-            txtCpf.Enabled = true;
-            btnBuscar.Enabled = true;
-            btnInserir.Enabled = true;
-            btnAlterar.Enabled = false;
+            LimparDadosGerais();
+            btnlimpar.Enabled = false;
+            btnlimpar.Text = "&Limpar";
         }
 
         // CRIAR LOG DE AUDITORIA
@@ -267,6 +255,9 @@ namespace ComercialSys91
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            grbEndereco.Enabled = false;
+            grbTelefones.Enabled = false;
+
             {
                 DialogResult alertaExclusao = MessageBox.Show($"O(a) Cliente: " + txtNome.Text + " (ID " + txtId.Text + ") será excluído(a) permanentemente! Deseja continuar?", "Tchau",
                                               MessageBoxButtons.YesNo,
@@ -278,6 +269,9 @@ namespace ComercialSys91
                     comm.CommandText = "delete from clientes where idCli = " + txtId.Text;
                     comm.ExecuteNonQuery();
                     MessageBox.Show("Cliente excluído(a) com sucesso!");
+                    LimparDadosGerais();
+                    LimparGridCliente();
+                    btnExcluir.Enabled = false;
                 }
 
             }
@@ -370,6 +364,43 @@ namespace ComercialSys91
         /// 
         /// </summary>
 
+        private void LimparGridCliente()
+        {
+            dgvClientes.Rows.Clear();
+            chBoxNome.Checked = true;
+            List<Cliente> listaDeClientes = Cliente.ListarNome();
+            int cont = 0;
+            foreach (Cliente cliente in listaDeClientes)
+            {
+                dgvClientes.Rows.Add();
+                dgvClientes.Rows[cont].Cells[0].Value = cliente.Id.ToString();
+                dgvClientes.Rows[cont].Cells[1].Value = cliente.Nome.ToString();
+                dgvClientes.Rows[cont].Cells[2].Value = cliente.Cpf.ToString();
+                dgvClientes.Rows[cont].Cells[3].Value = cliente.Email.ToString();
+                dgvClientes.Rows[cont].Cells[4].Value = cliente.Ativo;
+                cont++;
+            }
+        }
+        private void LimparDadosGerais()
+        {
+            txtNome.Focus();
+
+            ClearDadosGerais();
+
+            grbEndereco.Enabled = true;
+            grbTelefones.Enabled = true;
+
+            btnBuscar.Text = "...";
+            label6.Enabled = false;
+            label7.Enabled = false;
+            txtId.ReadOnly = true;
+            txtCpf.ReadOnly = false;
+            txtCpf.Enabled = true;
+            btnBuscar.Enabled = true;
+            btnInserir.Enabled = true;
+            btnAlterar.Enabled = false;
+            btnExcluir.Enabled = false;
+        }
         private void BuscaCep()
         {
             BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
@@ -479,7 +510,7 @@ namespace ComercialSys91
 
         private void label6_Click(object sender, EventArgs e) { }
         private void txtNome_TextChanged(object sender, EventArgs e) { }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void grbTelefones_Enter(object sender, EventArgs e) { }
         private void txtCpf_TextChanged(object sender, EventArgs e) { }
         private void mskTxtCep_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
@@ -489,6 +520,30 @@ namespace ComercialSys91
         private void label11_Click(object sender, EventArgs e) { }
         private void cmbUf_SelectedIndexChanged(object sender, EventArgs e) { }
 
+        private void dgvClientes_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            btnBuscar.Text = "&Buscar";
+            btnBuscar.Enabled = true;
+
+            txtId.Text = dgvClientes.Rows[dgvClientes.CurrentRow.Index].Cells[0].Value.ToString();
+            btnBuscar.PerformClick();
+
+            btnBuscar.Text = "&...";
+            btnlimpar.Enabled = true;
+
+
+        }
+
+        private void dgvClientes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Delete)
+            {
+                if (dgvClientes.Rows.Count > 0) {
+                    btnExcluir.PerformClick();
+                }
+            }
+        }
     }
 }
 
