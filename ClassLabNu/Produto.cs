@@ -135,7 +135,7 @@ namespace ClassLabNu
                 produto.Desconto = dr.GetDouble(5);
                 produto.Descontinuado = dr.GetBoolean(6);
             }
-            return produto;           
+            return produto;
         }
 
         public static Produto ConsultarPorCodbar(string _codbar)
@@ -199,10 +199,7 @@ namespace ClassLabNu
             }
             return produtos;
         }
-        public bool Alterar()
-        {
-            return true;
-        }
+
 
 
     }   // Fim da classe produto

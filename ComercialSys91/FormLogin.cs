@@ -31,10 +31,30 @@ namespace ComercialSys91
         private void FormLogin_Load(object sender, EventArgs e)
         {
             btnEntrar.Focus();
+            txtEmail.Focus();
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            lblMensagem.Visible = false;
+
+            if (Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text))
+            {
+                this.Close();
+            }
+            else
+            {
+                lblMensagem.Visible = true;
+            }
         }
         private void InitializeComponent()
         {
             this.grbLogin = new System.Windows.Forms.GroupBox();
+            this.lblMensagem = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,7 +62,6 @@ namespace ComercialSys91
             this.btnEntrar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.lblMensagem = new System.Windows.Forms.Label();
             this.grbLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +81,17 @@ namespace ComercialSys91
             this.grbLogin.TabIndex = 23;
             this.grbLogin.TabStop = false;
             this.grbLogin.Text = "Login";
+            // 
+            // lblMensagem
+            // 
+            this.lblMensagem.AutoSize = true;
+            this.lblMensagem.ForeColor = System.Drawing.Color.Red;
+            this.lblMensagem.Location = new System.Drawing.Point(22, 132);
+            this.lblMensagem.Name = "lblMensagem";
+            this.lblMensagem.Size = new System.Drawing.Size(250, 13);
+            this.lblMensagem.TabIndex = 15;
+            this.lblMensagem.Text = "Usuário e/ou Senha incorreto(s)! Digite novamente:";
+            this.lblMensagem.Visible = false;
             // 
             // txtSenha
             // 
@@ -102,7 +132,6 @@ namespace ComercialSys91
             // 
             // btnEntrar
             // 
-            this.btnEntrar.Enabled = false;
             this.btnEntrar.Location = new System.Drawing.Point(24, 163);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(75, 23);
@@ -113,7 +142,6 @@ namespace ComercialSys91
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Enabled = false;
             this.btnCancelar.Location = new System.Drawing.Point(197, 163);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
@@ -131,17 +159,6 @@ namespace ComercialSys91
             this.label5.TabIndex = 9;
             this.label5.Text = "Insira seu usuário (email) e senha para efetuar login:";
             // 
-            // lblMensagem
-            // 
-            this.lblMensagem.AutoSize = true;
-            this.lblMensagem.ForeColor = System.Drawing.Color.Red;
-            this.lblMensagem.Location = new System.Drawing.Point(22, 132);
-            this.lblMensagem.Name = "lblMensagem";
-            this.lblMensagem.Size = new System.Drawing.Size(250, 13);
-            this.lblMensagem.TabIndex = 15;
-            this.lblMensagem.Text = "Usuário e/ou Senha incorreto(s)! Digite novamente:";
-            this.lblMensagem.Visible = false;
-            // 
             // FormLogin
             // 
             this.ClientSize = new System.Drawing.Size(321, 239);
@@ -156,23 +173,5 @@ namespace ComercialSys91
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnEntrar_Click(object sender, EventArgs e)
-        {
-            lblMensagem.Visible = false;
-
-            if (Usuario.EfetuarLogin(txtEmail.Text, txtSenha.Text))
-            {
-                this.Close();
-            }
-            else
-            {
-                lblMensagem.Visible = true;
-            }
-        }
     }
 }

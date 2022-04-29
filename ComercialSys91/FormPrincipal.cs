@@ -63,8 +63,10 @@ namespace ComercialSys91
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();
-            
+            FormLogin formLogin = new FormLogin();            
+            //formLogin.ShowDialog();
         }
+
+
     }
 }

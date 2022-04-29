@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCpf = new System.Windows.Forms.TextBox();
@@ -56,36 +56,36 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnlimpar = new System.Windows.Forms.Button();
             this.grbDadosGerais = new System.Windows.Forms.GroupBox();
+            this.btnNovoCliente = new System.Windows.Forms.Button();
             this.chBoxId = new System.Windows.Forms.CheckBox();
             this.chBoxNome = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
             this.grbEndereco = new System.Windows.Forms.GroupBox();
+            this.btnBuscarNovamente = new System.Windows.Forms.Button();
             this.btnCadastroManual = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label27 = new System.Windows.Forms.Label();
+            this.cmbTipoTel = new System.Windows.Forms.ComboBox();
+            this.lbTipo = new System.Windows.Forms.Label();
             this.btnAlterarCep = new System.Windows.Forms.Button();
             this.cmBoxUf = new System.Windows.Forms.ComboBox();
             this.txtUf = new System.Windows.Forms.TextBox();
-            this.btnBuscarCep = new System.Windows.Forms.Button();
+            this.btnBuscarOnline = new System.Windows.Forms.Button();
             this.mskTxtCep = new System.Windows.Forms.MaskedTextBox();
             this.cmBoxEstado = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
+            this.lbBairro = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lbNumero = new System.Windows.Forms.Label();
+            this.lbUf = new System.Windows.Forms.Label();
+            this.lbCidade = new System.Windows.Forms.Label();
+            this.lbEstado = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtComplemento = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lbPrincEndereco = new System.Windows.Forms.Label();
             this.txtLogradouro = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.lbLogradouro = new System.Windows.Forms.Label();
+            this.lbCep = new System.Windows.Forms.Label();
+            this.lbComplemento = new System.Windows.Forms.Label();
             this.grbTelefones = new System.Windows.Forms.GroupBox();
-            this.btnAlterarTel = new System.Windows.Forms.Button();
-            this.btnTel = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -101,7 +101,8 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAlterarTel = new System.Windows.Forms.Button();
+            this.btnTel = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.grbDadosGerais.SuspendLayout();
@@ -185,6 +186,7 @@
             // 
             // btnInserir
             // 
+            this.btnInserir.Enabled = false;
             this.btnInserir.Location = new System.Drawing.Point(993, 610);
             this.btnInserir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInserir.Name = "btnInserir";
@@ -282,14 +284,14 @@
             this.dgvClientes.AccessibleName = "dgvClientes";
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmIdCli,
@@ -297,14 +299,14 @@
             this.clnCpf,
             this.clnEmail,
             this.clnAtivo});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvClientes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvClientes.Location = new System.Drawing.Point(448, 36);
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.ReadOnly = true;
@@ -376,6 +378,7 @@
             // 
             // grbDadosGerais
             // 
+            this.grbDadosGerais.Controls.Add(this.btnNovoCliente);
             this.grbDadosGerais.Controls.Add(this.chBoxId);
             this.grbDadosGerais.Controls.Add(this.chBoxNome);
             this.grbDadosGerais.Controls.Add(this.label8);
@@ -405,6 +408,16 @@
             this.grbDadosGerais.TabStop = false;
             this.grbDadosGerais.Text = "Dados Gerais";
             this.grbDadosGerais.Enter += new System.EventHandler(this.grbInserir_Enter);
+            // 
+            // btnNovoCliente
+            // 
+            this.btnNovoCliente.Location = new System.Drawing.Point(320, 208);
+            this.btnNovoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNovoCliente.Name = "btnNovoCliente";
+            this.btnNovoCliente.Size = new System.Drawing.Size(90, 71);
+            this.btnNovoCliente.TabIndex = 26;
+            this.btnNovoCliente.Text = "&Novo Cliente";
+            this.btnNovoCliente.UseVisualStyleBackColor = true;
             // 
             // chBoxId
             // 
@@ -439,30 +452,30 @@
             // 
             // grbEndereco
             // 
-            this.grbEndereco.Controls.Add(this.button1);
+            this.grbEndereco.Controls.Add(this.btnBuscarNovamente);
             this.grbEndereco.Controls.Add(this.btnCadastroManual);
-            this.grbEndereco.Controls.Add(this.comboBox3);
-            this.grbEndereco.Controls.Add(this.label27);
+            this.grbEndereco.Controls.Add(this.cmbTipoTel);
+            this.grbEndereco.Controls.Add(this.lbTipo);
             this.grbEndereco.Controls.Add(this.btnAlterarCep);
             this.grbEndereco.Controls.Add(this.cmBoxUf);
             this.grbEndereco.Controls.Add(this.txtUf);
-            this.grbEndereco.Controls.Add(this.btnBuscarCep);
+            this.grbEndereco.Controls.Add(this.btnBuscarOnline);
             this.grbEndereco.Controls.Add(this.mskTxtCep);
             this.grbEndereco.Controls.Add(this.cmBoxEstado);
-            this.grbEndereco.Controls.Add(this.label26);
+            this.grbEndereco.Controls.Add(this.lbBairro);
             this.grbEndereco.Controls.Add(this.txtBairro);
             this.grbEndereco.Controls.Add(this.txtNumero);
-            this.grbEndereco.Controls.Add(this.label25);
-            this.grbEndereco.Controls.Add(this.label24);
-            this.grbEndereco.Controls.Add(this.label23);
-            this.grbEndereco.Controls.Add(this.label22);
+            this.grbEndereco.Controls.Add(this.lbNumero);
+            this.grbEndereco.Controls.Add(this.lbUf);
+            this.grbEndereco.Controls.Add(this.lbCidade);
+            this.grbEndereco.Controls.Add(this.lbEstado);
             this.grbEndereco.Controls.Add(this.txtCidade);
             this.grbEndereco.Controls.Add(this.txtComplemento);
-            this.grbEndereco.Controls.Add(this.label21);
+            this.grbEndereco.Controls.Add(this.lbPrincEndereco);
             this.grbEndereco.Controls.Add(this.txtLogradouro);
-            this.grbEndereco.Controls.Add(this.label18);
-            this.grbEndereco.Controls.Add(this.label19);
-            this.grbEndereco.Controls.Add(this.label20);
+            this.grbEndereco.Controls.Add(this.lbLogradouro);
+            this.grbEndereco.Controls.Add(this.lbCep);
+            this.grbEndereco.Controls.Add(this.lbComplemento);
             this.grbEndereco.Location = new System.Drawing.Point(12, 329);
             this.grbEndereco.Name = "grbEndereco";
             this.grbEndereco.Size = new System.Drawing.Size(500, 336);
@@ -470,6 +483,18 @@
             this.grbEndereco.TabStop = false;
             this.grbEndereco.Text = "Endereço";
             this.grbEndereco.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnBuscarNovamente
+            // 
+            this.btnBuscarNovamente.Enabled = false;
+            this.btnBuscarNovamente.Location = new System.Drawing.Point(169, 106);
+            this.btnBuscarNovamente.Name = "btnBuscarNovamente";
+            this.btnBuscarNovamente.Size = new System.Drawing.Size(107, 20);
+            this.btnBuscarNovamente.TabIndex = 25;
+            this.btnBuscarNovamente.Text = "&Buscar";
+            this.btnBuscarNovamente.UseVisualStyleBackColor = true;
+            this.btnBuscarNovamente.Visible = false;
+            this.btnBuscarNovamente.Click += new System.EventHandler(this.btnBuscarNovamente_Click);
             // 
             // btnCadastroManual
             // 
@@ -481,27 +506,28 @@
             this.btnCadastroManual.UseVisualStyleBackColor = true;
             this.btnCadastroManual.Click += new System.EventHandler(this.btnCadastroManual_Click);
             // 
-            // comboBox3
+            // cmbTipoTel
             // 
-            this.comboBox3.Enabled = false;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cmbTipoTel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoTel.Enabled = false;
+            this.cmbTipoTel.FormattingEnabled = true;
+            this.cmbTipoTel.Items.AddRange(new object[] {
             "Residencial",
             "Comercial"});
-            this.comboBox3.Location = new System.Drawing.Point(104, 255);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(102, 21);
-            this.comboBox3.TabIndex = 46;
+            this.cmbTipoTel.Location = new System.Drawing.Point(104, 255);
+            this.cmbTipoTel.Name = "cmbTipoTel";
+            this.cmbTipoTel.Size = new System.Drawing.Size(102, 21);
+            this.cmbTipoTel.TabIndex = 46;
             // 
-            // label27
+            // lbTipo
             // 
-            this.label27.AutoSize = true;
-            this.label27.Enabled = false;
-            this.label27.Location = new System.Drawing.Point(25, 258);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(31, 13);
-            this.label27.TabIndex = 45;
-            this.label27.Text = "Tipo:";
+            this.lbTipo.AutoSize = true;
+            this.lbTipo.Enabled = false;
+            this.lbTipo.Location = new System.Drawing.Point(25, 258);
+            this.lbTipo.Name = "lbTipo";
+            this.lbTipo.Size = new System.Drawing.Size(31, 13);
+            this.lbTipo.TabIndex = 45;
+            this.lbTipo.Text = "Tipo:";
             // 
             // btnAlterarCep
             // 
@@ -562,15 +588,15 @@
             this.txtUf.TabIndex = 39;
             this.txtUf.TextChanged += new System.EventHandler(this.txtUf_TextChanged);
             // 
-            // btnBuscarCep
+            // btnBuscarOnline
             // 
-            this.btnBuscarCep.Location = new System.Drawing.Point(26, 65);
-            this.btnBuscarCep.Name = "btnBuscarCep";
-            this.btnBuscarCep.Size = new System.Drawing.Size(152, 21);
-            this.btnBuscarCep.TabIndex = 41;
-            this.btnBuscarCep.Text = "&Busca Online";
-            this.btnBuscarCep.UseVisualStyleBackColor = true;
-            this.btnBuscarCep.Click += new System.EventHandler(this.btnBuscarCep_Click);
+            this.btnBuscarOnline.Location = new System.Drawing.Point(26, 65);
+            this.btnBuscarOnline.Name = "btnBuscarOnline";
+            this.btnBuscarOnline.Size = new System.Drawing.Size(152, 21);
+            this.btnBuscarOnline.TabIndex = 41;
+            this.btnBuscarOnline.Text = "&Busca Online";
+            this.btnBuscarOnline.UseVisualStyleBackColor = true;
+            this.btnBuscarOnline.Click += new System.EventHandler(this.btnBuscarOnline_Click);
             // 
             // mskTxtCep
             // 
@@ -584,6 +610,7 @@
             // 
             // cmBoxEstado
             // 
+            this.cmBoxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmBoxEstado.Enabled = false;
             this.cmBoxEstado.FormattingEnabled = true;
             this.cmBoxEstado.Items.AddRange(new object[] {
@@ -618,16 +645,17 @@
             this.cmBoxEstado.Name = "cmBoxEstado";
             this.cmBoxEstado.Size = new System.Drawing.Size(268, 21);
             this.cmBoxEstado.TabIndex = 38;
+            this.cmBoxEstado.SelectedIndexChanged += new System.EventHandler(this.cmBoxEstado_SelectedIndexChanged);
             // 
-            // label26
+            // lbBairro
             // 
-            this.label26.AutoSize = true;
-            this.label26.Enabled = false;
-            this.label26.Location = new System.Drawing.Point(160, 158);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(37, 13);
-            this.label26.TabIndex = 36;
-            this.label26.Text = "Bairro:";
+            this.lbBairro.AutoSize = true;
+            this.lbBairro.Enabled = false;
+            this.lbBairro.Location = new System.Drawing.Point(160, 158);
+            this.lbBairro.Name = "lbBairro";
+            this.lbBairro.Size = new System.Drawing.Size(37, 13);
+            this.lbBairro.TabIndex = 36;
+            this.lbBairro.Text = "Bairro:";
             // 
             // txtBairro
             // 
@@ -645,51 +673,51 @@
             this.txtNumero.Enabled = false;
             this.txtNumero.Location = new System.Drawing.Point(104, 155);
             this.txtNumero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNumero.MaxLength = 11;
+            this.txtNumero.MaxLength = 5;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.ReadOnly = true;
             this.txtNumero.Size = new System.Drawing.Size(49, 20);
             this.txtNumero.TabIndex = 34;
             // 
-            // label25
+            // lbNumero
             // 
-            this.label25.AutoSize = true;
-            this.label25.Enabled = false;
-            this.label25.Location = new System.Drawing.Point(25, 158);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(47, 13);
-            this.label25.TabIndex = 33;
-            this.label25.Text = "Número:";
+            this.lbNumero.AutoSize = true;
+            this.lbNumero.Enabled = false;
+            this.lbNumero.Location = new System.Drawing.Point(25, 158);
+            this.lbNumero.Name = "lbNumero";
+            this.lbNumero.Size = new System.Drawing.Size(47, 13);
+            this.lbNumero.TabIndex = 33;
+            this.lbNumero.Text = "Número:";
             // 
-            // label24
+            // lbUf
             // 
-            this.label24.AutoSize = true;
-            this.label24.Enabled = false;
-            this.label24.Location = new System.Drawing.Point(379, 206);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(24, 13);
-            this.label24.TabIndex = 31;
-            this.label24.Text = "UF:";
+            this.lbUf.AutoSize = true;
+            this.lbUf.Enabled = false;
+            this.lbUf.Location = new System.Drawing.Point(379, 207);
+            this.lbUf.Name = "lbUf";
+            this.lbUf.Size = new System.Drawing.Size(24, 13);
+            this.lbUf.TabIndex = 31;
+            this.lbUf.Text = "UF:";
             // 
-            // label23
+            // lbCidade
             // 
-            this.label23.AutoSize = true;
-            this.label23.Enabled = false;
-            this.label23.Location = new System.Drawing.Point(25, 182);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(43, 13);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Cidade:";
+            this.lbCidade.AutoSize = true;
+            this.lbCidade.Enabled = false;
+            this.lbCidade.Location = new System.Drawing.Point(25, 182);
+            this.lbCidade.Name = "lbCidade";
+            this.lbCidade.Size = new System.Drawing.Size(43, 13);
+            this.lbCidade.TabIndex = 30;
+            this.lbCidade.Text = "Cidade:";
             // 
-            // label22
+            // lbEstado
             // 
-            this.label22.AutoSize = true;
-            this.label22.Enabled = false;
-            this.label22.Location = new System.Drawing.Point(25, 206);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(43, 13);
-            this.label22.TabIndex = 29;
-            this.label22.Text = "Estado:";
+            this.lbEstado.AutoSize = true;
+            this.lbEstado.Enabled = false;
+            this.lbEstado.Location = new System.Drawing.Point(25, 207);
+            this.lbEstado.Name = "lbEstado";
+            this.lbEstado.Size = new System.Drawing.Size(43, 13);
+            this.lbEstado.TabIndex = 29;
+            this.lbEstado.Text = "Estado:";
             // 
             // txtCidade
             // 
@@ -714,14 +742,14 @@
             this.txtComplemento.Size = new System.Drawing.Size(361, 20);
             this.txtComplemento.TabIndex = 26;
             // 
-            // label21
+            // lbPrincEndereco
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(23, 36);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(219, 13);
-            this.label21.TabIndex = 24;
-            this.label21.Text = "Selecione a forma de Cadastro de Endereço:";
+            this.lbPrincEndereco.AutoSize = true;
+            this.lbPrincEndereco.Location = new System.Drawing.Point(23, 36);
+            this.lbPrincEndereco.Name = "lbPrincEndereco";
+            this.lbPrincEndereco.Size = new System.Drawing.Size(219, 13);
+            this.lbPrincEndereco.TabIndex = 24;
+            this.lbPrincEndereco.Text = "Selecione a forma de Cadastro de Endereço:";
             // 
             // txtLogradouro
             // 
@@ -735,35 +763,35 @@
             this.txtLogradouro.Size = new System.Drawing.Size(361, 20);
             this.txtLogradouro.TabIndex = 10;
             // 
-            // label18
+            // lbLogradouro
             // 
-            this.label18.AutoSize = true;
-            this.label18.Enabled = false;
-            this.label18.Location = new System.Drawing.Point(25, 134);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 13);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "Logradouro:";
+            this.lbLogradouro.AutoSize = true;
+            this.lbLogradouro.Enabled = false;
+            this.lbLogradouro.Location = new System.Drawing.Point(25, 134);
+            this.lbLogradouro.Name = "lbLogradouro";
+            this.lbLogradouro.Size = new System.Drawing.Size(64, 13);
+            this.lbLogradouro.TabIndex = 11;
+            this.lbLogradouro.Text = "Logradouro:";
             // 
-            // label19
+            // lbCep
             // 
-            this.label19.AutoSize = true;
-            this.label19.Enabled = false;
-            this.label19.Location = new System.Drawing.Point(25, 109);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 13);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "CEP:";
+            this.lbCep.AutoSize = true;
+            this.lbCep.Enabled = false;
+            this.lbCep.Location = new System.Drawing.Point(25, 109);
+            this.lbCep.Name = "lbCep";
+            this.lbCep.Size = new System.Drawing.Size(31, 13);
+            this.lbCep.TabIndex = 12;
+            this.lbCep.Text = "CEP:";
             // 
-            // label20
+            // lbComplemento
             // 
-            this.label20.AutoSize = true;
-            this.label20.Enabled = false;
-            this.label20.Location = new System.Drawing.Point(25, 233);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(74, 13);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Complemento:";
+            this.lbComplemento.AutoSize = true;
+            this.lbComplemento.Enabled = false;
+            this.lbComplemento.Location = new System.Drawing.Point(25, 233);
+            this.lbComplemento.Name = "lbComplemento";
+            this.lbComplemento.Size = new System.Drawing.Size(74, 13);
+            this.lbComplemento.TabIndex = 13;
+            this.lbComplemento.Text = "Complemento:";
             // 
             // grbTelefones
             // 
@@ -791,27 +819,6 @@
             this.grbTelefones.TabStop = false;
             this.grbTelefones.Text = "Telefones";
             this.grbTelefones.Enter += new System.EventHandler(this.grbTelefones_Enter);
-            // 
-            // btnAlterarTel
-            // 
-            this.btnAlterarTel.Enabled = false;
-            this.btnAlterarTel.Location = new System.Drawing.Point(82, 233);
-            this.btnAlterarTel.Name = "btnAlterarTel";
-            this.btnAlterarTel.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterarTel.TabIndex = 47;
-            this.btnAlterarTel.Text = "&Alterar";
-            this.btnAlterarTel.UseVisualStyleBackColor = true;
-            // 
-            // btnTel
-            // 
-            this.btnTel.FlatAppearance.BorderSize = 0;
-            this.btnTel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTel.Location = new System.Drawing.Point(497, 195);
-            this.btnTel.Name = "btnTel";
-            this.btnTel.Size = new System.Drawing.Size(75, 23);
-            this.btnTel.TabIndex = 38;
-            this.btnTel.Text = "apagueaqui";
-            this.btnTel.UseVisualStyleBackColor = true;
             // 
             // label14
             // 
@@ -860,6 +867,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Residencial Fixo (Casa)",
@@ -925,9 +933,11 @@
             this.label11.Size = new System.Drawing.Size(49, 13);
             this.label11.TabIndex = 52;
             this.label11.Text = "Etiqueta:";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Residencial Fixo (Casa)",
@@ -958,16 +968,26 @@
             this.label9.TabIndex = 49;
             this.label9.Text = "Adicionar Telefone:";
             // 
-            // button1
+            // btnAlterarTel
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(169, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 20);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "&Buscar Novamente";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.btnAlterarTel.Enabled = false;
+            this.btnAlterarTel.Location = new System.Drawing.Point(82, 233);
+            this.btnAlterarTel.Name = "btnAlterarTel";
+            this.btnAlterarTel.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterarTel.TabIndex = 47;
+            this.btnAlterarTel.Text = "&Alterar";
+            this.btnAlterarTel.UseVisualStyleBackColor = true;
+            // 
+            // btnTel
+            // 
+            this.btnTel.FlatAppearance.BorderSize = 0;
+            this.btnTel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTel.Location = new System.Drawing.Point(497, 195);
+            this.btnTel.Name = "btnTel";
+            this.btnTel.Size = new System.Drawing.Size(75, 23);
+            this.btnTel.TabIndex = 38;
+            this.btnTel.Text = "apagueaqui";
+            this.btnTel.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -981,7 +1001,7 @@
             // 
             // FormCliente
             // 
-            this.AcceptButton = this.btnInserir;
+            this.AcceptButton = this.btnCadastroManual;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnlimpar;
@@ -993,6 +1013,7 @@
             this.Controls.Add(this.btnInserir);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
@@ -1038,33 +1059,33 @@
         private System.Windows.Forms.GroupBox grbEndereco;
         private System.Windows.Forms.GroupBox grbTelefones;
         private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lbNumero;
+        private System.Windows.Forms.Label lbUf;
+        private System.Windows.Forms.Label lbCidade;
+        private System.Windows.Forms.Label lbEstado;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtComplemento;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lbPrincEndereco;
         private System.Windows.Forms.TextBox txtLogradouro;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbLogradouro;
+        private System.Windows.Forms.Label lbCep;
+        private System.Windows.Forms.Label lbComplemento;
         private System.Windows.Forms.ComboBox cmBoxEstado;
-        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lbBairro;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.CheckBox chBoxId;
         private System.Windows.Forms.CheckBox chBoxNome;
         private System.Windows.Forms.Button btnTel;
         private System.Windows.Forms.MaskedTextBox mskTxtCep;
-        private System.Windows.Forms.Button btnBuscarCep;
+        private System.Windows.Forms.Button btnBuscarOnline;
         private System.Windows.Forms.TextBox txtUf;
         private System.Windows.Forms.ComboBox cmBoxUf;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox cmbTipoTel;
+        private System.Windows.Forms.Label lbTipo;
         private System.Windows.Forms.Button btnAlterarCep;
         private System.Windows.Forms.Button btnAlterarTel;
         private System.Windows.Forms.Button btnCadastroManual;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscarNovamente;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
@@ -1081,6 +1102,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnNovoCliente;
     }
 }
 

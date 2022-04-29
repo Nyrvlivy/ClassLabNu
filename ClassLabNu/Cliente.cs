@@ -32,6 +32,10 @@ namespace ClassLabNu
         {
         }
 
+        public Cliente(int id)
+        {
+            Id = id;
+        }
         public Cliente(int id, string nome, string email)
         {
             Id = id;
@@ -90,7 +94,7 @@ namespace ClassLabNu
                 cmd.ExecuteNonQuery();
                 resultado = true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -181,9 +185,12 @@ namespace ClassLabNu
             MySqlCommand cmd = Banco.Abrir();
             cmd.CommandType = CommandType.Text;
             // Text direto, pois Command.Type usamos quando criamos procedure
-            cmd.CommandText = "upadte clientes set ativo = 0 where idCli = " + _id;
+            cmd.CommandText = "update clientes set ativo = 0 where idCli = " + _id;
             cmd.ExecuteReader();
             cmd.Connection.Close();
         }
+
+
+
     }
 }

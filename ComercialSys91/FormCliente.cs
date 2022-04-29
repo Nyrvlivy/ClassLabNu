@@ -23,6 +23,7 @@ namespace ComercialSys91
         {
             txtNome.Focus();
             cmBoxUf.Enabled = false;
+            cmbTipoTel.SelectedIndex = 0;
 
         }
 
@@ -43,6 +44,7 @@ namespace ComercialSys91
                 MessageBox.Show($"Olá, amiguinho! Ooops, deu erro: {error.Message}");
                 //("Falha na inserção. Não foi possível gravar dados corretamente!");
             }
+
         }
         private void btnListar_Click(object sender, EventArgs e)
         {
@@ -62,15 +64,6 @@ namespace ComercialSys91
             }
         }
 
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -80,10 +73,10 @@ namespace ComercialSys91
                 txtId.Focus();
                 btnBuscar.Text = "&Buscar";
 
-                txtId.Text = "";
-                txtCpf.Text = "";
-                txtNome.Text = "";
-                txtEmail.Text = "";
+                txtId.Clear();
+                txtCpf.Clear();
+                txtNome.Clear();
+                txtEmail.Clear();
 
                 txtCpf.ReadOnly = false;
                 btnlimpar.Enabled = false;
@@ -94,53 +87,62 @@ namespace ComercialSys91
             }
             else
             {
-                Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtId.Text));
-                if (cliente.Id > 0)
+                try
                 {
-                    txtId.Focus();
-                    txtId.Enabled = true;
+                    Cliente cliente = Cliente.ConsultarPorId(int.Parse(txtId.Text));
 
-                    txtNome.Text = cliente.Nome.ToString();
-                    txtCpf.Text = cliente.Cpf.ToString();
-                    txtEmail.Text = cliente.Email.ToString();
+                    if (cliente.Id > 0)
+                    {
+                        txtId.Focus();
+                        txtId.Enabled = true;
 
-                    dtpDataCad.Value = cliente.DataCad.Date;
-                    chkAtivo.Checked = cliente.Ativo;
+                        txtNome.Text = cliente.Nome.ToString();
+                        txtCpf.Text = cliente.Cpf.ToString();
+                        txtEmail.Text = cliente.Email.ToString();
 
-                    txtCpf.ReadOnly = true;
-                    btnAlterar.Enabled = true;
-                    btnInserir.Enabled = false;
-                    btnlimpar.Enabled = true;
-                    btnDesativar.Enabled = true;
-                    btnAlterarCep.Enabled = true;
-                    btnAlterarTel.Enabled = true;
+                        dtpDataCad.Value = cliente.DataCad.Date;
+                        chkAtivo.Checked = cliente.Ativo;
 
-                    label6.Enabled = true;
-                    label7.Enabled = true;
+                        txtCpf.ReadOnly = true;
+                        btnAlterar.Enabled = true;
+                        btnInserir.Enabled = false;
+                        btnlimpar.Enabled = true;
+                        btnDesativar.Enabled = true;
+                        btnAlterarCep.Enabled = true;
+                        btnAlterarTel.Enabled = true;
 
-                    btnBuscar.Enabled = false;
+                        label6.Enabled = true;
+                        label7.Enabled = true;
+
+                        btnBuscar.Enabled = false;
 
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Código de cliente não encontrado!");
+                    }
                 }
-                else
+                catch
                 {
-                    MessageBox.Show("Código de cliente não encontrado!");
-                    btnBuscar.Text = "...";
+                    {
+                        MessageBox.Show("Digite um código válido!");
+                        btnBuscar.Text = "...";
 
-                    txtId.Focus();
-                    txtId.Text = "";
+                        txtId.Focus();
+                        txtId.Clear();
 
-                    txtId.ReadOnly = true;
-                    txtCpf.ReadOnly = false;
+                        txtId.ReadOnly = true;
+                        txtCpf.ReadOnly = false;
 
-                    label6.Enabled = false;
-                    label7.Enabled = false;
-                    chkAtivo.Enabled = false;
+                        label6.Enabled = false;
+                        label7.Enabled = false;
+                        chkAtivo.Enabled = false;
 
-                    btnBuscar.Enabled = true;
-                    btnAlterar.Enabled = false;
-                    btnDesativar.Enabled = false;
-
+                        btnBuscar.Enabled = true;
+                        btnAlterar.Enabled = false;
+                        btnDesativar.Enabled = false;
+                    }
                 }
             }
         }
@@ -148,10 +150,10 @@ namespace ComercialSys91
         {
             txtNome.Focus();
 
-            txtId.Text = "";
-            txtNome.Text = "";
-            txtCpf.Text = "";
-            txtEmail.Text = "";
+            txtId.Clear();
+            txtNome.Clear();
+            txtCpf.Clear();
+            txtEmail.Clear();
 
             btnBuscar.Text = "...";
             label6.Enabled = false;
@@ -165,10 +167,6 @@ namespace ComercialSys91
         }
 
         // CRIAR LOG DE AUDITORIA
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
@@ -181,10 +179,10 @@ namespace ComercialSys91
             {
                 MessageBox.Show("Falha na alteração");
                 btnBuscar.Text = "...";
-                txtId.Text = "";
-                txtCpf.Text = "";
-                txtNome.Text = "";
-                txtEmail.Text = "";
+                txtId.Clear();
+                txtCpf.Clear();
+                txtNome.Clear();
+                txtEmail.Clear();
 
                 txtId.ReadOnly = true;
                 label6.Enabled = false;
@@ -194,32 +192,6 @@ namespace ComercialSys91
                 btnAlterar.Enabled = false;
                 btnDesativar.Enabled = false;
             }
-        }
-
-        private void txtCpf_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDesativar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grbInserir_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkAtivo_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void chBoxId_CheckedChanged(object sender, EventArgs e)
@@ -276,39 +248,111 @@ namespace ComercialSys91
             }
         }
 
-        private void mskTxtCep_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void btnDesativar_Click(object sender, EventArgs e)
         {
+            {
+                DialogResult alertaExclusao = MessageBox.Show($"Os dados do Cliente " + txtId.Text + " serão excluídos permanentemente! Desega continuar?", "Excluir Aluno...",
+                                                   MessageBoxButtons.YesNo,
+                                                   MessageBoxIcon.Question);
+
+                if (alertaExclusao == DialogResult.Yes && txtId.Text != string.Empty)
+                {
+                    var comm = Banco.Abrir();
+                    comm.CommandText = "delete from clientes where id = " + txtId.Text;
+                    comm.ExecuteNonQuery();
+                    MessageBox.Show("Aluno excluído com sucesso!");
+                }
+
+            }
+
         }
 
-        private void btnBuscarCep_Click(object sender, EventArgs e)
+        private void btnBuscarOnline_Click(object sender, EventArgs e)
         {
-            if (btnBuscar.Text == "&Busca Online")
-            {
+            // Botões 
+            btnBuscar.Enabled = false;
+            btnBuscarNovamente.Visible = true;
+            btnBuscarNovamente.Enabled = true;
+
+            // Caixas de Texto
+            lbCep.Enabled = true;
+            lbLogradouro.Enabled = true;
+            lbNumero.Enabled = true;
+            lbBairro.Enabled = true;
+            lbCidade.Enabled = true;
+            lbEstado.Enabled = true;
+            lbUf.Enabled = true;
+            lbComplemento.Enabled = true;
+            lbTipo.Enabled = true;
+
+            mskTxtCep.Enabled = true;
+            mskTxtCep.ReadOnly = false;
+
+            // Campos para editar
+            txtNumero.Clear();
+            txtComplemento.Clear();
+        }
+        private void btnBuscarNovamente_Click(object sender, EventArgs e)
+        {
+            if (btnBuscarNovamente.Text == "&Buscar")
                 try
                 {
-                    btnBuscar.Text = "&Buscar Novamente";
+                    btnBuscarNovamente.Text = "&Buscar Novamente";
 
+                    // Busca CEP no banco
                     BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
                     txtLogradouro.Text = buscacep.TipomaisLogradouro;
                     txtBairro.Text = buscacep.Bairro;
                     txtCidade.Text = buscacep.Cidade;
                     txtUf.Text = buscacep.UF;
 
-                    txtNumero.Text = "";
-                    txtComplemento.Text = "";
-
+                    // Campos que recebem o CEP
                     txtLogradouro.ReadOnly = true;
                     txtBairro.ReadOnly = true;
                     txtCidade.ReadOnly = true;
                     txtUf.ReadOnly = true;
 
+                    // Campos Alteráveis
+                    txtNumero.ReadOnly = false;
+                    txtNumero.Enabled = true;
+                    txtComplemento.ReadOnly = false;
+                    txtComplemento.Enabled = true;
+                    cmbTipoTel.Enabled = true;
 
+                    // Campos para editar
+                    txtNumero.Clear();
+                    txtComplemento.Clear();
+                }
+                catch { }
+            else
+            {
+                // Busca CEP no banco
+                BuscaCep buscacep = new BuscaCep(mskTxtCep.Text);
+                txtLogradouro.Text = buscacep.TipomaisLogradouro;
+                txtBairro.Text = buscacep.Bairro;
+                txtCidade.Text = buscacep.Cidade;
+                txtUf.Text = buscacep.UF;
 
-                }
-                catch (Exception erro)
-                {
-                    MessageBox.Show($"Ops... " + erro.Message);
-                }
+                // Campos que recebem o CEP
+                txtLogradouro.ReadOnly = true;
+                txtBairro.ReadOnly = true;
+                txtCidade.ReadOnly = true;
+                txtUf.ReadOnly = true;
+
+                // Campos Alteráveis
+                txtNumero.ReadOnly = false;
+                txtNumero.Enabled = true;
+                txtComplemento.ReadOnly = false;
+                txtComplemento.Enabled = true;
+                cmbTipoTel.Enabled = true;
+                cmBoxEstado.SelectedItem = null;
+                cmBoxUf.SelectedItem = null;
+                txtComplemento.Clear();
+                cmbTipoTel.SelectedIndex = 0;
+
+                // Campos para editar
+                txtNumero.Clear();
+                txtComplemento.Clear();
             }
         }
 
@@ -324,17 +368,72 @@ namespace ComercialSys91
 
         private void btnCadastroManual_Click(object sender, EventArgs e)
         {
+            // Botões 
+            btnBuscar.Enabled = true;
+            btnBuscarNovamente.Visible = false;
+            btnBuscarNovamente.Enabled = false;
+
+            // Caixas de Texto
+            lbCep.Enabled = true;
+            lbLogradouro.Enabled = true;
+            lbNumero.Enabled = true;
+            lbBairro.Enabled = true;
+            lbCidade.Enabled = true;
+            lbEstado.Enabled = true;
+            lbUf.Enabled = true;
+            lbComplemento.Enabled = true;
+            lbTipo.Enabled = true;
+
+            mskTxtCep.Enabled = true;
+            mskTxtCep.ReadOnly = false;
+
+            // Enabled 
+
+            mskTxtCep.Enabled = true;
             txtLogradouro.Enabled = true;
             txtNumero.Enabled = true;
             txtBairro.Enabled = true;
             txtCidade.Enabled = true;
+            cmBoxEstado.Enabled = true;
             cmBoxUf.Enabled = false;
-        }
+            txtComplemento.Enabled = true;
+            cmbTipoTel.Enabled = true;
 
-        private void grbTelefones_Enter(object sender, EventArgs e)
+            // ReadOnly
+            mskTxtCep.ReadOnly = false;
+            txtLogradouro.ReadOnly = false;
+            txtNumero.ReadOnly = false;
+            txtBairro.ReadOnly = false;
+            txtCidade.ReadOnly = false;
+            txtComplemento.ReadOnly = false;
+
+            // Campos para editar
+            mskTxtCep.Clear();
+            txtLogradouro.Clear();
+            txtNumero.Clear();
+            txtBairro.Clear();
+            txtCidade.Clear();
+            cmBoxEstado.SelectedItem = null;
+            cmBoxUf.SelectedItem = null;
+            txtComplemento.Clear();
+            cmbTipoTel.SelectedIndex = 0;
+        }
+        private void cmBoxEstado_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            var index = cmBoxEstado.SelectedIndex;
+            cmBoxUf.SelectedIndex = index;
         }
+
+        private void label6_Click(object sender, EventArgs e) { }
+        private void txtNome_TextChanged(object sender, EventArgs e) { }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void grbTelefones_Enter(object sender, EventArgs e) { }
+        private void txtCpf_TextChanged(object sender, EventArgs e) { }
+        private void mskTxtCep_MaskInputRejected(object sender, MaskInputRejectedEventArgs e) { }
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void grbInserir_Enter(object sender, EventArgs e) { }
+        private void chkAtivo_CheckedChanged(object sender, EventArgs e) { }
+        private void label11_Click(object sender, EventArgs e) { }
     }
 }
 
