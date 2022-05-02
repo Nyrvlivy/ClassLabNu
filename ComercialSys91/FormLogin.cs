@@ -81,6 +81,7 @@ namespace ComercialSys91
             this.grbLogin.TabIndex = 23;
             this.grbLogin.TabStop = false;
             this.grbLogin.Text = "Login";
+            this.grbLogin.Enter += new System.EventHandler(this.grbLogin_Enter);
             // 
             // lblMensagem
             // 
@@ -173,5 +174,9 @@ namespace ComercialSys91
 
         }
 
+        private void grbLogin_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace ComercialSys91
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            Usuario c = new Usuario(txtNome.Text, txtEmail.Text, txtSenha.Text, new Nivel(txtNivel.Text));
+            Usuario c = new Usuario(txtNomeUser.Text, txtEmailUser.Text, txtSenhaUser.Text, new Nivel(cmbNivel.Text));
 
             try
             {
@@ -37,45 +37,11 @@ namespace ComercialSys91
             }
         }
 
-        private void btnListar_Click(object sender, EventArgs e)
-        {
-            lstUsuarios.Items.Clear();
-            List<Usuario> listaDeUsuarios = Usuario.Listar();
-            foreach (Usuario usuario in listaDeUsuarios)
-            {
-                lstUsuarios.Items.Add(usuario.Id + "  |  Nome: " + usuario.Nome + "     |  Email: " + usuario.Email + "   |  Senha: " + usuario.Senha +
-                                      "   |  Nivel: " + usuario.Nivel);
-            }
-        }
-        private void txtNome_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSenha_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNivel_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSenhaNov_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        private void txtNome_TextChanged(object sender, EventArgs e) { }
+        private void txtEmail_TextChanged(object sender, EventArgs e) { }
+        private void txtId_TextChanged(object sender, EventArgs e) { }
+        private void txtSenha_TextChanged(object sender, EventArgs e) { }        
+        private void txtSenhaNov_TextChanged(object sender, EventArgs e) { }
+        private void label15_Click(object sender, EventArgs e) { }
     }
 }

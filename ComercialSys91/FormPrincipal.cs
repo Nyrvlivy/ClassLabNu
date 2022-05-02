@@ -17,56 +17,43 @@ namespace ComercialSys91
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e) // Para acessar o formulário Usuário
         {
-            //Criar Instancia do Formulario Usuário
             FormUsuario formUsuario = new FormUsuario();
-
-            //Tornado formUsuario Filho do contaner FormPrincipal
-            //formUsuario.MdiParent = this;
-
-            //Exibe o Formulario de Cliente no Formprincipal
+            formUsuario.MdiParent = this;
             formUsuario.Show();
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e) // Para acessar o formulário Cliente
         {
-            // Criar Instancia do Formulario Cliente
             FormCliente formCliente = new FormCliente();
-
-            // Tornado formCliente Filho do contaner FormPrincipal
-            //formCliente.MdiParent = this;
-            //FormPrincipal formPrincipal = new FormPrincipal();
-            //formPrincipal.Hide();
-
-            // Exibe o Formulario de Cliente no Formprincipal
+            formCliente.MdiParent = this;
             formCliente.Show();
         }
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e) // Para acessar o formulário Produto
         {
-
-            //Criar Instancia do Formulario Produto
             FormProduto formProduto = new FormProduto();
-
-            //Tornado formProduto Filho do contaner FormPrincipal
-            //formProduto.MdiParent = this;
-
-            //Exibe o Formulario de Cliente no Formprincipal
+            formProduto.MdiParent = this;
             formProduto.Show();
+        }
+
+        private void novoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormNovoPedido formNovoPedido = new FormNovoPedido();
+            formNovoPedido.MdiParent = this;
+            formNovoPedido.Show();
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();            
+            FormLogin formLogin = new FormLogin();
             //formLogin.ShowDialog();
         }
 
-
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e) { }
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e) { }
     }
 }
